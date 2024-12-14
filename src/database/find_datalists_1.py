@@ -23,6 +23,7 @@ def find_multiple_lists_in_log(file_path, list_names):
         print(f"找不到文件：{file_path}")
         return {}
     return results
+    
 
 # 使用示例
 log_file = "/Users/lilianlee/Desktop/23-06-25_2130月見野櫻花.alog"  # 替换为你的日志文件路径
@@ -35,5 +36,12 @@ if found_lists:
         print(f"\n{list_name}:")
         for entry in entries:
             print(entry)
+    # 將數據儲存到對應的檔案
+        file_name = f"{list_name}.txt"  # 使用列表名稱作為檔案名稱
+        with open(file_name, "w") as file:
+            for entry in entries:
+                file.write(entry + "\n")
+        print(f"已將數據儲存到檔案：{file_name}")
 else:
     print("未找到符合条件的列表。")
+
