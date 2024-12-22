@@ -1,7 +1,7 @@
 import pandas as pd
 import pymysql
 
-from import_data_2 import output_file
+from integrate_lists_2 import output_file
 
 # 使用 f-string 來插入變數
 file_path = f"/users/lilianlee/{output_file}"
@@ -24,8 +24,8 @@ cursor = connection.cursor()
 # 插入數據
 for index, row in df.iterrows():
     sql = """
-    INSERT INTO coffee.sakura_230625_2130 (time, temp1, temp2, bean_type, roasting_type) 
-    VALUES (%s, %s, %s, %s, %s)
+    INSERT INTO coffee.coffee_roasting_data (timestamp, time, temp1, temp2, bean_type, process_type) 
+    VALUES (%s, %s, %s, %s, %s, %s)
     """
     cursor.execute(sql, tuple(row))
 
@@ -35,3 +35,4 @@ cursor.close()
 connection.close()
 
 print("Data successfully inserted!")
+

@@ -1,9 +1,0 @@
-# Coffee Roasting Data Management System
-
-This repository demonstrates how to manage, analyze, and visualize coffee roasting data. It is part of a project to optimize coffee roasting processes for consistent quality.
-
-## Features
-1. Structured database schema for storing coffee temperature and roasting parameters.
-2. Real-time data ingestion using Python and MySQL.
-3. Analytical tools for evaluating roasting patterns and trends.
-4. Docker environment for easy database setup.

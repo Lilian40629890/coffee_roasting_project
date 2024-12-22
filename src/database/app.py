@@ -1,24 +1,85 @@
+import os
 import subprocess
+import paramiko
 
-def execute_scripts():
-    # 定义脚本文件名
-    scripts = ['data_cleaning.py', 'import_data.py', 'export_data.py']
-    
-    for script in scripts:
+# Configuration for NAS connection
+NAS_HOST = "192.168.1.100"  # NAS 的 IP 位址
+NAS_USERNAME = "admin"      # 登入用戶名
+NAS_PASSWORD = "password"   # 登入密碼
+NAS_FOLDER = "/Public/Coffee/Artisan/"  # NAS 上的目標資料夾
+LOCAL_LOG_FOLDER = "/Users/lilianlee/coffee_database"  # 將檔案下載到本地的資料夾
+
+# 數據文件夾
+DATA_FOLDER = './data/'
+
+# MySQL 資料庫配置
+DB_CONFIG = {
+    'host': 'localhost',
+    'user': 'root',
+    'password': 'password',
+    'database': 'coffee_analysis'
+}
+
+# Step 1: Connect to NAS and fetch log files
+def connect_and_fetch_logs():
+    try:
+        print("Connecting to NAS...")
+        # 使用 paramiko 建立 SFTP 連線
+        ssh = paramiko.SSHClient()
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        ssh.connect(NAS_HOST, username=NAS_USERNAME, password=NAS_PASSWORD)
+        
+        # 使用 SFTP 下載檔案
+        sftp = ssh.open_sftp()
+        os.makedirs(LOCAL_LOG_FOLDER, exist_ok=True)
+        
+        # 確保目錄存在
         try:
-            # 使用 subprocess 执行脚本
-            result = subprocess.run(['python', script], check=True, capture_output=True, text=True)
-            print(f'{script} 执行成功')
-            print(result.stdout)  # 打印脚本执行输出
-        except subprocess.CalledProcessError as e:
-            print(f'{script} 执行失败')
-            print(e.stderr)  # 打印错误输出
-            return False  # 如果有任何一个脚本执行失败，返回 False
-    
-    return True  # 如果所有脚本都成功执行，返回 True
+            file_list = sftp.listdir_attr(NAS_FOLDER)
+        except IOError as e:
+            raise Exception(f"Unable to access NAS folder {NAS_FOLDER}: {e}")
+        
+        for file_attr in file_list:
+            if file_attr.filename.endswith('.log'):
+                remote_file = os.path.join(NAS_FOLDER, file_attr.filename)
+                local_file = os.path.join(LOCAL_LOG_FOLDER, file_attr.filename)
+                print(f"Downloading {remote_file} to {local_file}")
+                sftp.get(remote_file, local_file)
+        
+        sftp.close()
+        ssh.close()
+        print("NAS log files fetched successfully.")
+    except Exception as e:
+        print(f"Error connecting to NAS: {e}")
+        raise
 
-# 执行脚本并打印结果
-if execute_scripts():
-    print('Success！')
-else:
-    print('Failed')
+# Step 2: Process log files with your scripts
+def process_logs_with_scripts():
+    try:
+        log_files = [f for f in os.listdir(LOCAL_LOG_FOLDER) if f.endswith('.log')]
+        script_paths = ["linebreak_logdata_1.py", "extract_lists_1.1.py", "modify_file_name_1.2.py", "modify_file_content_1.3.py", "timestamps_1.4.py", "integrate_lists_2.py","export_sql_3.py", "delete_temporary_files_4.py"]
+        
+        for log_file in log_files:
+            print(f"Processing {log_file}")
+            for script in script_paths:
+                print(f"Running {script} on {log_file}")
+                result = subprocess.run(["python", script, os.path.join(LOCAL_LOG_FOLDER, log_file)], capture_output=True, text=True)
+                if result.returncode != 0:
+                    print(f"Error in {script}: {result.stderr}")
+                    raise Exception(f"{script} failed on {log_file}")
+                print(f"{script} completed for {log_file}.")
+    except Exception as e:
+        print(f"Error processing logs: {e}")
+        raise
+
+# Step 3: Main execution flow
+if __name__ == "__main__":
+    try:
+        # Step 1: Fetch logs
+        connect_and_fetch_logs()
+        # Step 2: Process logs
+        process_logs_with_scripts()
+        # All done
+        print("Success")
+    except Exception as e:
+        print(f"Script terminated with errors: {e}")
