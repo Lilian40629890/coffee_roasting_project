@@ -3,16 +3,19 @@
 This repository contains Python code and resources for managing and analyzing coffee roasting data.
 
 ## Features
-- Collects real-time roasting temperature data.
-- Stores data in a structured MySQL database.
+- Organizes historical data in a structured MySQL database.
+- Collects real-time roasting temperature data, and sythesize it to MySQL database. 
 - Provides analysis tools for visualizing temperature trends.
 
 ## How to Use
 1. Clone this repository.
 2. Install dependencies: `pip install -r requirements.txt`
-3. Run the main application: `python src/app.py`
+3. Run the main application to organize new data: `python src/database/new_data/app_new_data.py`
 
-## Scripts Overview
+## new data management scripts Overview
+- **app_new_data.py**: Processes CSV files containing coffee roasting data by extracting timestamp, temp1, and temp2 columns dynamically. Parses bean_type and process_type from file names (e.g., YY-MM-DD-tttt_beantype_processtype.alog) and integrates the information before uploading it to a MySQL database, ensuring compatibility with existing database schema.
+
+## old data management scripts Overview
 - **linebreak_logdata_1.py**: Breaks the log data into lines for easier processing.
 - **extract_lists_1.1**: Extracts relevant data from the log and stores it in temporary files.
 - **modify_file_name_1.2.py**: Renames temporary files for better organization.

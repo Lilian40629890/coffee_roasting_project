@@ -17,7 +17,7 @@ DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
     'password': 'password',
-    'database': 'coffee_analysis'
+    'database': 'coffee'
 }
 
 # Step 1: Connect to NAS and fetch log files

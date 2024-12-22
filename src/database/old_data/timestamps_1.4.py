@@ -1,10 +1,11 @@
 import os
 import re
-import sys
 from datetime import datetime, timedelta
+import sys
 
 # 解析檔案名稱中的時間
 def parse_time_from_filename(filename):
+    # 使用正則表達式來匹配日期時間格式
     match = re.match(r"(\d{2})-(\d{2})-(\d{2})_(\d{4})", filename)
     if match:
         year = "20" + match.group(1)  # 假設年份是20XX
@@ -15,6 +16,22 @@ def parse_time_from_filename(filename):
         time_str = f"{year}-{month}-{day} {hour}:{minute}"
         return datetime.strptime(time_str, "%Y-%m-%d %H:%M")
     return None
+
+# 設定檔案所在的資料夾路徑
+folder_path = "/Users/lilianlee/coffee_database/timex.txt"
+
+# 假設資料夾中只有一個檔案，取得該檔案名稱
+filename = os.listdir(folder_path)[0]  # 取得第一個檔案名稱
+
+# 解析檔案名稱中的時間
+if filename:
+    print(f"Parsing time from filename: {filename}")
+    file_time = parse_time_from_filename(filename)
+    if file_time:
+        print(f"Extracted time: {file_time}")
+    else:
+        print(f"Failed to extract time from {filename}")
+
 
 # 讀取 timex.txt 中的數值列表
 def read_timex_file(file_path):
@@ -42,13 +59,10 @@ def process_file(filename, timex_file, output_file):
     start_time = parse_time_from_filename(filename)
     if not start_time:
         raise ValueError("無法從檔案名稱解析起始時間")
-
     # 2. 讀取 timex.txt 中的數值
     time_values = read_timex_file(timex_file)
-
     # 3. 轉換數值為符合 SQL TIMESTAMP 的格式
     timestamp = convert_to_timestamp(start_time, time_values)
-
     # 4. 將 timestamps 寫入新的檔案
     write_timestamp_file(output_file, timestamp)
     print(f"已成功將 timestamp 寫入 {output_file}")
@@ -59,16 +73,9 @@ if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("請提供檔案名稱作為命令列參數")
         sys.exit(1)
-
     input_filename = sys.argv[1]  # 取得命令列傳遞的檔案名稱
-    timex_file = "timex.txt"  # 假設的輸入檔案
-    output_dir = "/Users/lilianlee/coffee_database"  # 指定的儲存目錄
-    os.makedirs(output_dir, exist_ok=True)  # 如果資料夾不存在，則創建
-
-    # 產生完整的輸出檔案路徑
-    output_file = os.path.join(output_dir, "timestamp.txt")
-
+    timex_file = "/Users/lilianlee/coffee_database/timex.txt"  # 假設的輸入檔案
+    output_file = "/Users/lilianlee/coffee_database/timestamp.txt"  # 產出的檔案名稱
     process_file(input_filename, timex_file, output_file)
-
 
 

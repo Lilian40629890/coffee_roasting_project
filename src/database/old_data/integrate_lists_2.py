@@ -2,16 +2,16 @@ import csv
 import sys
 
 # 讀取檔案並將內容賦值給變數
-with open("timex.txt", "r") as file:
+with open("/Users/lilianlee/coffee_database/timex.txt", "r") as file:
     first_data = [line.strip() for line in file.readlines()]
 
-with open("temp1.txt", "r") as file:
+with open("/Users/lilianlee/coffee_database/temp1.txt", "r") as file:
     second_data = [line.strip() for line in file.readlines()]
 
-with open("temp2.txt", "r") as file:
+with open("/Users/lilianlee/coffee_database/temp2.txt", "r") as file:
     third_data = [line.strip() for line in file.readlines()]
 
-with open("timestamp.txt", "r") as file:
+with open("/Users/lilianlee/coffee_database/timestamp.txt", "r") as file:
     fourth_data = [line.strip() for line in file.readlines()]   
 
 # 使用 join() 方法將列表中的每一項轉換成字串
@@ -33,7 +33,7 @@ third_list = third_data.split(",")
 fourth_list = fourth_data.split(",")
 
 # 確保兩列表長度相同，若不同則補充空值
-max_length = max(len(first_list), len(second_list), len(third_list))
+max_length = max(len(first_list), len(second_list), len(third_list), len(fourth_list))
 first_list.extend([""] * (max_length - len(first_list)))
 second_list.extend([""] * (max_length - len(second_list)))
 third_list.extend([""] * (max_length - len(third_list)))
@@ -51,7 +51,7 @@ for i in range(len(table_data)):
     table_data[i] = table_data[i] + (bean_type, process_type)
 
 # 定義輸出檔名
-output_file = "output.csv" 
+output_file = "/Users/lilianlee/coffee_database/output.csv" 
 
 # 將表格寫入 CSV
 with open(output_file, mode="w", newline="", encoding="utf-8") as file:

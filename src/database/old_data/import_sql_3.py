@@ -24,7 +24,7 @@ cursor = connection.cursor()
 # 插入數據
 for index, row in df.iterrows():
     sql = """
-    INSERT INTO coffee.coffee_roasting_data (timestamp, time, temp1, temp2, bean_type, process_type) 
+    INSERT INTO coffee.coffee_roasting_database (timestamp, time, temp1, temp2, bean_type, process_type) 
     VALUES (%s, %s, %s, %s, %s, %s)
     """
     cursor.execute(sql, tuple(row))
