@@ -1,19 +1,19 @@
-          OLD_DATA                                   NEW_DATA                               ANALYSIS
+             OLD_DATA                                NEW_DATA                          ANALYSIS
 
    [Temperature Sensor]                    [Temperature Sensor]
-                 ↓                                            ↓
-            [Ardiuno]                                 [Artisan]
-                 ↓                                            ↓
-      (in `.alog` format)                    (in `.csv` format)
-                 ↓                                            ↓
-      [Local Computer]                         [Local Computer]
-                 ↓                                            ↓
-             [NAS]                             [MySQL Database]
-                 ↓                                            ↓
-     [Local Computer]                                         ↓
-                 ↓                                            ↓
-    [MySQL Database]                           [MySQL Database]                   [MySQL Database]
-                                                                                                 ↓
+                 ↓                                         ↓
+              [Ardiuno]                               [Artisan]
+                 ↓                                         ↓
+    (in `.alog` format)                      (in `.csv` format)
+                 ↓                                         ↓
+       [Local Computer]                        [Local Computer]
+                 ↓                                         ↓
+               [NAS]                           [MySQL Database]
+                 ↓                                         ↓
+       [Local Computer]                                    ↓
+                 ↓                                         ↓
+       [MySQL Database]                        [MySQL Database]                   [MySQL Database]
+                                                                                           ↓
                                                                                 [Jupyter Notebook]
 
 ## Project Architecture

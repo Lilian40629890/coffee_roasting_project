@@ -30,11 +30,11 @@ This repository contains Python code and resources for managing and analyzing co
 
 # Testing
 
-### How to Run Testing
+### How to Run Test
 1. Run the testing application: `python tests/testing_new_data.py`
 
-### Testing Script Overview
-- **testing_new_data.py**: Validates the correctness of data extraction and transformation logic., and verifies that data is successfully imported into the MySQL database.
+### Test Script Overview
+- **test_main.py**: Validates the correctness of data extraction and transformation logic., and verifies that data is successfully imported into the MySQL database.
 
 # Analysis
 # Project Outcome
