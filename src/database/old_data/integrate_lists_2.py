@@ -42,13 +42,32 @@ fourth_list.extend([""] * (max_length - len(fourth_list)))
 # 合併成表格格式
 table_data = list(zip(fourth_list, first_list, second_list, third_list))
 
+# 提取 timestamp.txt 中的前十六個字
+with open("/Users/lilianlee/coffee_database/timestamp.txt", "r") as file:
+    first_sixteen_chars = file.read(16)  # 只讀取前 16 個字
+
+# 將格式 "2023-06-25 21:30" 轉換為 "2306252130"
+roasting_batch_id = (
+    first_sixteen_chars[2:4] +  # 年的後兩位
+    first_sixteen_chars[5:7] +  # 月
+    first_sixteen_chars[8:10] +  # 日
+    first_sixteen_chars[11:13] +  # 小時
+    first_sixteen_chars[14:16]  # 分鐘
+)
+
+print(f"Roasting Batch ID: {roasting_batch_id}")  # 印出確認
+
 # 讓用戶輸入 bean_type 和 process_type
+print("請輸入以下資料：")
 bean_type = input("What is the bean type? ")
 process_type = input("What is the process type? ")
 
+# 確認用戶輸入的內容
+print(f"Bean Type: {bean_type}, Process Type: {process_type}")
+
 # 新增兩個直行並填入用戶輸入的 'bean_type' 和 'process_type'
 for i in range(len(table_data)):
-    table_data[i] = table_data[i] + (bean_type, process_type)
+    table_data[i] = table_data[i] + (bean_type, process_type, roasting_batch_id)
 
 # 定義輸出檔名
 output_file = "/Users/lilianlee/coffee_database/output.csv" 
@@ -57,7 +76,7 @@ output_file = "/Users/lilianlee/coffee_database/output.csv"
 with open(output_file, mode="w", newline="", encoding="utf-8") as file:
     writer = csv.writer(file)
     # 寫入表頭
-    writer.writerow(["timestamp", "time", "temp1", "temp2", "bean_type", "process_type"])
+    writer.writerow(["timestamp", "time", "temp1", "temp2", "bean_type", "process_type","roasting_batch_id"])
     # 寫入數據
     writer.writerows(table_data)
 
