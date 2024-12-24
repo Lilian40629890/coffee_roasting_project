@@ -44,7 +44,7 @@ def process_csv(file_path):
 # Extract bean_type and process_type from file name
 def extract_info_from_filename(filename):
     try:
-        # Assume filename format：YY-MM-DD-tttt_beantype_processtype.alog
+        # Assume filename format：YY-MM-DD-tttt_beantype_processtype.csv
         base_name = os.path.splitext(filename)[0]  # Remove file suffix
         parts = base_name.split('_')
         if len(parts) != 3:
