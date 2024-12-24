@@ -3,12 +3,12 @@ import re
 from datetime import datetime, timedelta
 import sys
 
-# 解析檔案名稱中的時間
+# Parse the time in the file name
 def parse_time_from_filename(filename):
-    # 使用正則表達式來匹配日期時間格式
+    # Use regular expressions to match date and time formats
     match = re.match(r"(\d{2})-(\d{2})-(\d{2})_(\d{4})", filename)
     if match:
-        year = "20" + match.group(1)  # 假設年份是20XX
+        year = "20" + match.group(1)  # data collect started at 2020
         month = match.group(2)
         day = match.group(3)
         hour = match.group(4)[:2]
@@ -17,13 +17,13 @@ def parse_time_from_filename(filename):
         return datetime.strptime(time_str, "%Y-%m-%d %H:%M")
     return None
 
-# 設定檔案所在的資料夾路徑
+# Set the folder path where the file is located
 folder_path = "/Users/lilianlee/coffee_database/timex.txt"
 
-# 假設資料夾中只有一個檔案，取得該檔案名稱
-filename = os.listdir(folder_path)[0]  # 取得第一個檔案名稱
+# Assuming there is only one file in the folder, get the name of the file
+filename = os.listdir(folder_path)[0]  # Get the first file name
 
-# 解析檔案名稱中的時間
+# Parse the time in the file name
 if filename:
     print(f"Parsing time from filename: {filename}")
     file_time = parse_time_from_filename(filename)
@@ -33,14 +33,14 @@ if filename:
         print(f"Failed to extract time from {filename}")
 
 
-# 讀取 timex.txt 中的數值列表
+# Read the list of values ​​in timex.txt
 def read_timex_file(file_path):
     with open(file_path, "r") as file:
         content = file.read()
         values = [float(val.strip()) for val in content.split(",")]
     return values
 
-# 將數值轉換為符合 SQL TIMESTAMP 格式的 timestamp
+# Convert the numeric value to a timestamp that conforms to the SQL TIMESTAMP format
 def convert_to_timestamp(start_time, time_values):
     timestamp = [
         (start_time + timedelta(seconds=val)).strftime("%Y-%m-%d %H:%M:%S")
@@ -48,34 +48,34 @@ def convert_to_timestamp(start_time, time_values):
     ]
     return timestamp
 
-# 將結果寫入新檔案，以逗號分隔的列表形式
+# Write results to a new file as a comma separated list
 def write_timestamp_file(output_path, timestamp):
     with open(output_path, "w") as file:
-        file.write(", ".join(timestamp))  # 將列表轉為逗號分隔的字串
+        file.write(", ".join(timestamp))  #Convert list to comma separated string
 
 # 主邏輯
 def process_file(filename, timex_file, output_file):
-    # 1. 從檔案名稱解析起始時間
+    # 1. From file name resolution start time
     start_time = parse_time_from_filename(filename)
     if not start_time:
-        raise ValueError("無法從檔案名稱解析起始時間")
-    # 2. 讀取 timex.txt 中的數值
+        raise ValueError("Unable to parse start time from archive name")
+    # 2. Read the value in timex.txt
     time_values = read_timex_file(timex_file)
-    # 3. 轉換數值為符合 SQL TIMESTAMP 的格式
+    # 3. Convert a numeric value to a format that conforms to SQL TIMESTAMP
     timestamp = convert_to_timestamp(start_time, time_values)
-    # 4. 將 timestamps 寫入新的檔案
+    # 4. Write timestamps to new file
     write_timestamp_file(output_file, timestamp)
-    print(f"已成功將 timestamp 寫入 {output_file}")
+    print(f"Successfully written timestamp to {output_file}")
 
-# 使用範例
+
 if __name__ == "__main__":
-    # 從命令列引數取得檔案名稱
+    # Get file name from command line arguments
     if len(sys.argv) < 2:
-        print("請提供檔案名稱作為命令列參數")
+        print("Please provide the file name as a command line parameter")
         sys.exit(1)
-    input_filename = sys.argv[1]  # 取得命令列傳遞的檔案名稱
-    timex_file = "/Users/lilianlee/coffee_database/timex.txt"  # 假設的輸入檔案
-    output_file = "/Users/lilianlee/coffee_database/timestamp.txt"  # 產出的檔案名稱
+    input_filename = sys.argv[1]  # Get the file name passed by the command line
+    timex_file = "/Users/lilianlee/coffee_database/timex.txt"  # Input file name
+    output_file = "/Users/lilianlee/coffee_database/timestamp.txt"  # Output file name
     process_file(input_filename, timex_file, output_file)
 
 

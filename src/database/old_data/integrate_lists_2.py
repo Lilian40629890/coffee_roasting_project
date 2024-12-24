@@ -1,7 +1,7 @@
 import csv
 import sys
 
-# 讀取檔案並將內容賦值給變數
+# Read the file and assign the contents to variables
 with open("/Users/lilianlee/coffee_database/timex.txt", "r") as file:
     first_data = [line.strip() for line in file.readlines()]
 
@@ -14,32 +14,32 @@ with open("/Users/lilianlee/coffee_database/temp2.txt", "r") as file:
 with open("/Users/lilianlee/coffee_database/timestamp.txt", "r") as file:
     fourth_data = [line.strip() for line in file.readlines()]   
 
-# 使用 join() 方法將列表中的每一項轉換成字串
-first_data = "\n".join(first_data)  # 用換行符將元素連接成字串
+# Use the join() method to convert each item in the list into a string
+first_data = "\n".join(first_data)  # Concatenate elements into strings using newline characters
 second_data = "\n".join(second_data)
 third_data = "\n".join(third_data)
 fourth_data = "\n".join(fourth_data)
 
-# 使用 replace() 方法移除所有空白鍵
+# Use the replace() method to remove all blank keys
 cleaned_first_data = first_data.replace(" ", "")
 cleaned_second_data = second_data.replace(" ", "")
 cleaned_third_data = third_data.replace(" ", "")
 cleaned_fourth_data = fourth_data.replace(" ", "")
 
-# 將數據依逗號分隔轉換為列表
+# Convert the data into a comma separated list
 first_list = first_data.split(",")
 second_list = second_data.split(",")
 third_list = third_data.split(",")
 fourth_list = fourth_data.split(",")
 
-# 確保兩列表長度相同，若不同則補充空值
+# Make sure the lengths of the two lists are the same. If they are different, add null values.
 max_length = max(len(first_list), len(second_list), len(third_list), len(fourth_list))
 first_list.extend([""] * (max_length - len(first_list)))
 second_list.extend([""] * (max_length - len(second_list)))
 third_list.extend([""] * (max_length - len(third_list)))
 fourth_list.extend([""] * (max_length - len(fourth_list)))
 
-# 合併成表格格式
+# Merge into table format
 table_data = list(zip(fourth_list, first_list, second_list, third_list))
 
 # 提取 timestamp.txt 中的前十六個字
@@ -69,10 +69,10 @@ print(f"Bean Type: {bean_type}, Process Type: {process_type}")
 for i in range(len(table_data)):
     table_data[i] = table_data[i] + (bean_type, process_type, roasting_batch_id)
 
-# 定義輸出檔名
+# Define output file name
 output_file = "/Users/lilianlee/coffee_database/output.csv" 
 
-# 將表格寫入 CSV
+# Write table to CSV
 with open(output_file, mode="w", newline="", encoding="utf-8") as file:
     writer = csv.writer(file)
     # 寫入表頭
@@ -80,7 +80,7 @@ with open(output_file, mode="w", newline="", encoding="utf-8") as file:
     # 寫入數據
     writer.writerows(table_data)
 
-print(f"CSV 文件已成功儲存為 {output_file}")
+print(f"CSV file successfully saved as {output_file}")
 
 
 

@@ -13,9 +13,9 @@ except FileNotFoundError:
     print(f"Error: File not found at {file_path}")
     exit(1)
 
-df = df.fillna(0)  # 將 NaN 值替換為 0
+df = df.fillna(0)  # Replace NaN values ​​with 0
 
-# 建立 MySQL 連線
+# Establish MySQL connection
 connection = pymysql.connect(
     host="localhost",
     user="root",
@@ -25,7 +25,7 @@ connection = pymysql.connect(
 
 cursor = connection.cursor()
 
-# 插入數據
+#Insert data
 for index, row in df.iterrows():
     sql = """
     INSERT INTO coffee.coffee_roasting_database (timestamp, time, temp1, temp2, bean_type, process_type, roasting_batch_id) 
@@ -33,7 +33,7 @@ for index, row in df.iterrows():
     """
     cursor.execute(sql, tuple(row))
 
-# 提交並關閉
+# Submit and close
 connection.commit()
 cursor.close()
 connection.close()

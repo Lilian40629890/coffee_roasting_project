@@ -7,12 +7,12 @@ NAS_HOST = "192.168.1.100"  # NAS 的 IP 位址
 NAS_USERNAME = "admin"      # 登入用戶名
 NAS_PASSWORD = "password"   # 登入密碼
 NAS_FOLDER = "/Public/Coffee/Artisan/"  # NAS 上的目標資料夾
-LOCAL_LOG_FOLDER = "/Users/lilianlee/coffee_database"  # 將檔案下載到本地的資料夾
+LOCAL_LOG_FOLDER = "/Users/lilianlee/coffee_database"  # Download the file to a local folder
 
-# 數據文件夾
+#data folder
 DATA_FOLDER = './data/'
 
-# MySQL 資料庫配置
+# MySQL database configuration
 DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
@@ -24,16 +24,16 @@ DB_CONFIG = {
 def connect_and_fetch_logs():
     try:
         print("Connecting to NAS...")
-        # 使用 paramiko 建立 SFTP 連線
+        # Use paramiko to establish SFTP connection
         ssh = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh.connect(NAS_HOST, username=NAS_USERNAME, password=NAS_PASSWORD)
         
-        # 使用 SFTP 下載檔案
+        # Download files using SFTP
         sftp = ssh.open_sftp()
         os.makedirs(LOCAL_LOG_FOLDER, exist_ok=True)
         
-        # 確保目錄存在
+        # Make sure the directory exists
         try:
             file_list = sftp.listdir_attr(NAS_FOLDER)
         except IOError as e:
@@ -57,7 +57,7 @@ def connect_and_fetch_logs():
 def process_logs_with_scripts():
     try:
         log_files = [f for f in os.listdir(LOCAL_LOG_FOLDER) if f.endswith('.log')]
-        script_paths = ["linebreak_logdata_1.py", "extract_lists_1.1.py", "modify_file_name_1.2.py", "modify_file_content_1.3.py", "timestamps_1.4.py", "integrate_lists_2.py","export_sql_3.py", "delete_temporary_files_4.py"]
+        script_paths = ["linebreak_logdata_1.py", "extract_lists_1.1.py", "file_modification_1.2.py", "timestamps_1.3.py", "integrate_lists_2.py","export_sql_3.py", "delete_temporary_files_4.py"]
         
         for log_file in log_files:
             print(f"Processing {log_file}")

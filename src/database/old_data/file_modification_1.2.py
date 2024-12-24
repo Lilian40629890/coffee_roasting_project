@@ -1,3 +1,9 @@
+import os
+
+os.rename("'timex'.txt", 'timex.txt')  
+os.rename("'temp1'.txt", 'temp1.txt')  
+os.rename("'temp2'.txt", 'temp2.txt')  
+
 # Define a function to handle file modifications
 def modify_file(file_name):
     # Read file content
@@ -14,4 +20,4 @@ modify_file("timex.txt")
 modify_file("temp1.txt")
 modify_file("temp2.txt")
 
-print("Three files have been modified.")
+print("Three files have been modified successfully.")
