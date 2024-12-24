@@ -12,7 +12,7 @@ db_config = {
 }
 
 # Target folder path
-folder_path = '/Public/Coffee/Artisan/new_roasting_data'
+folder_path = '"/Users/lilianlee/coffee_database'
 
 # Connect to MySQL database
 def connect_to_mysql():
