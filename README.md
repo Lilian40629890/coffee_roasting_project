@@ -21,13 +21,12 @@ This repository contains Python code and resources for managing and analyzing co
 
 ### Old Data Management Scripts Overview
 - **linebreak_logdata_1.py**: Breaks the log data into lines for easier processing.
-- **extract_lists_1.1**: Extracts relevant data from the log and stores it in temporary files.
-- **modify_file_name_1.2.py**: Renames temporary files for better organization.
-- **modify_file_content_1.3.py**: Modifies the content of the files based on certain rules.
-- **timestamps_1.4.py**: Converts timestamp data into a format usable by SQL.
+    - **extract_lists_1.1**: Extracts relevant data from the log and stores it in temporary files.
+    - **file_modification_1.2.py**: Modifies the content of the temporary files for better organization.
+    - **timestamps_1.3.py**: Converts timestamp data into a format usable by SQL.
 - **integrate_lists_2.py**: Integrates the extracted lists into a table format.
-- **import_sql_3.py**: Imports the table data into an SQL database.
-- **delete_temporary_files_3.5.py**: Deletes temporary files after processing is complete.
+- **import_sql_3.py**: Imports the table data into personal SQL database.
+    - **delete_temporary_files_3.1.py**: Deletes temporary files after processing is complete.
 
 # Testing
 
