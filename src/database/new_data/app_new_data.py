@@ -3,104 +3,104 @@ import pandas as pd
 import mysql.connector
 from mysql.connector import Error
 
-# MySQL连接配置
+# MySQL connection configuration
 db_config = {
-    'host': 'localhost',    # 替换为你的MySQL主机地址
-    'user': 'root',         # 替换为你的MySQL用户名
-    'password': 'password', # 替换为你的MySQL密码
-    'database': 'coffee'    # 替换为你的数据库名称
+    'host': 'localhost',    
+    'user': 'root',         
+    'password': 'password', 
+    'database': 'coffee'    
 }
 
-# 目標資料夾路徑
+# Target folder path
 folder_path = '/Public/Coffee/Artisan/new_roasting_data'
 
-# 連接MySQL資料庫
+# Connect to MySQL database
 def connect_to_mysql():
     try:
         connection = mysql.connector.connect(**db_config)
         if connection.is_connected():
-            print("成功連接到MySQL資料庫")
+            print("Successfully connected to MySQL database")
             return connection
     except Error as e:
-        print(f"錯誤: 無法連接到MySQL資料庫: {e}")
+        print(f"false: Unable to connect to MySQL database: {e}")
         return None
 
-# 读取并提取CSV文件中的数据
+# Read and extract data from CSV files
 def process_csv(file_path):
     try:
-        # 读取CSV文件
+        #Read CSV file
         df = pd.read_csv(file_path)
         
-        # 检查是否包含所需的列并提取
+        # Check if required columns are included and extract
         required_columns = ['timestamp', 'temp1', 'temp2']
         if not all(col in df.columns for col in required_columns):
-            print(f"错误: CSV文件 {file_path} 缺少必要的列 {required_columns}")
+            print(f"false: CSV file {file_path} Required columns are missing {required_columns}")
             return None
-        return df[required_columns]  # 提取所需的列
+        return df[required_columns]  #Extract the required columns
     except Exception as e:
-        print(f"错误: 读取CSV文件 {file_path} 失败: {e}")
+        print(f"false: Read CSV file {file_path} failed: {e}")
         return None
 
-# 从文件名中提取bean_type和process_type
+# Extract bean_type and process_type from file name
 def extract_info_from_filename(filename):
     try:
-        # 假设文件名格式：YY-MM-DD-tttt_beantype_processtype.alog
-        base_name = os.path.splitext(filename)[0]  # 去除文件后缀
+        # Assume filename format：YY-MM-DD-tttt_beantype_processtype.alog
+        base_name = os.path.splitext(filename)[0]  # Remove file suffix
         parts = base_name.split('_')
         if len(parts) != 3:
-            print(f"错误: 文件名 {filename} 格式不正确")
+            print(f"false: file name {filename} Incorrect format")
             return None, None
-        # 提取bean_type和process_type
+        #Extract bean_type and process_type
         bean_type = parts[1]
         process_type = parts[2]
         return bean_type, process_type
     except Exception as e:
-        print(f"错误: 从文件名 {filename} 提取信息失败: {e}")
+        print(f"false: from file name {filename} extract information failed: {e}")
         return None, None
 
-# 上传数据到MySQL
+# Upload data to MySQL
 def upload_to_mysql(df, bean_type, process_type, connection):
     cursor = connection.cursor()
     try:
-        # 插入数据到已有表格
+        #Insert data into existing table
         for _, row in df.iterrows():
             cursor.execute(
                 "INSERT INTO roasting_data (timestamp, temp1, temp2, bean_type, process_type) VALUES (%s, %s, %s, %s, %s)",
                 (row['timestamp'], row['temp1'], row['temp2'], bean_type, process_type)
             )
         connection.commit()
-        print(f"成功上传 {len(df)} 条数据到数据库")
+        print(f"success to upload {len(df)} pieces of data to the database")
     except Error as e:
-        print(f"错误: 上传数据到数据库时出现问题: {e}")
+        print(f"false: Problem uploading data to database: {e}")
         connection.rollback()
 
-# 遍历文件夹并处理所有CSV文件
+# Loop through the folder and process all CSV files
 def process_folder():
     connection = connect_to_mysql()
     if not connection:
         return
     
-    # 浏览资料夹中的所有CSV文件
+    # Browse all CSV files in the folder
     for filename in os.listdir(folder_path):
         if filename.endswith(".csv"):
             file_path = os.path.join(folder_path, filename)
-            print(f"处理文件: {file_path}")
+            print(f"Process files: {file_path}")
             
-            # 从文件名中提取bean_type和process_type
+            # Extract bean_type and process_type from file name
             bean_type, process_type = extract_info_from_filename(filename)
             if not bean_type or not process_type:
-                continue  # 如果无法提取信息，跳过此文件
+                continue  # If information cannot be extracted, skip this file
             
-            # 读取CSV文件并处理
+            # Read CSV file and process
             df = process_csv(file_path)
             if df is not None:
                 upload_to_mysql(df, bean_type, process_type, connection)
     
-    # 关闭数据库连接
+    #Close database connection
     if connection.is_connected():
         connection.close()
-        print("已关闭MySQL数据库连接")
+        print("MySQL database connection closed")
 
-# 执行脚本
+# Execute script
 if __name__ == "__main__":
     process_folder()
