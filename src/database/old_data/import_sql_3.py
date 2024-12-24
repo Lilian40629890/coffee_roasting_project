@@ -3,15 +3,15 @@ import pymysql
 
 from integrate_lists_2 import output_file
 
-# 使用 f-string 來插入變數
+# Use f-string to insert variables
 file_path = f"/users/lilianlee/{output_file}"
 
-# 讀取 CSV 檔案
+# Read CSV file
 df = pd.read_csv(file_path)
 
-df = df.fillna(0)  # 將 NaN 值替換為 0
+df = df.fillna(0)  # Replace NaN values ​​with 0
 
-# 建立 MySQL 連線
+# Establish MySQL connection
 connection = pymysql.connect(
     host="localhost",
     user="root",
@@ -21,7 +21,7 @@ connection = pymysql.connect(
 
 cursor = connection.cursor()
 
-# 插入數據
+#Insert data
 for index, row in df.iterrows():
     sql = """
     INSERT INTO coffee.coffee_roasting_database (timestamp, time, temp1, temp2, bean_type, process_type) 
@@ -29,7 +29,7 @@ for index, row in df.iterrows():
     """
     cursor.execute(sql, tuple(row))
 
-# 提交並關閉
+# Submit and close
 connection.commit()
 cursor.close()
 connection.close()
