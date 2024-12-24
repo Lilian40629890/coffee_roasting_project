@@ -26,7 +26,7 @@ This repository contains Python code and resources for managing and analyzing co
     - **timestamps_1.3.py**: Converts timestamp data into a format usable by SQL.
 - **integrate_lists_2.py**: Integrates the extracted lists into a table format.
 - **import_sql_3.py**: Imports the table data into personal SQL database.
-    - **delete_temporary_files_3.1.py**: Deletes temporary files after processing is complete.
+- **delete_temporary_files_4.py**: Deletes temporary files after processing is complete.
 
 # Testing
 
