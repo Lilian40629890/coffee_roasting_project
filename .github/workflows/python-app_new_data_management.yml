@@ -37,7 +37,7 @@ jobs:
     - name: Check code structure
       run: |
         ls -R
-        cat testing.py
+        cat test_main.py
 
     - name: Run tests
       run: |
