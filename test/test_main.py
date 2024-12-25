@@ -47,9 +47,10 @@ def extract_info_from_filename(filename):
             return None, None, None
         
         # Extract roasting_batch_id (combine YYMMDD and tttt)
-        date_and_id = parts[0]  # YY-MM-DD-tttt
-        date, batch_id = ''.join(date_and_id.split('-')[:3]), date_and_id.split('-')[3]
-        roasting_batch_id = date + batch_id
+        date_and_id = parts[0]  # YY-MM-DD
+        date = ''.join(date_and_id.split('-'))  # Remove dashes to form a continuous string
+        batch_id = parts[1]  # 2144
+        roasting_batch_id = date + batch_id  # Combine date and batch_id
         
         # Extract bean_type and process_type from the second and third parts
         bean_type = parts[2]
@@ -59,6 +60,7 @@ def extract_info_from_filename(filename):
     except Exception as e:
         print(f"false: From file name {filename}, extracting information failed: {e}")
         return None, None, None
+
 
 # Mock upload function
 def mock_upload_to_mysql(df, bean_type, process_type, roasting_batch_id, connection):
