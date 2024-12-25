@@ -38,19 +38,22 @@ def extract_info_from_filename(filename):
     try:
         # Assume filename format: YY-MM-DD_tttt_beantype_processtype.csv
         base_name = os.path.splitext(os.path.basename(filename))[0]  # Remove file extension
+        print(f"Base name: {base_name}")  # Debugging output
         parts = base_name.split('_')
-        if len(parts) != 4:
+        print(f"Parts: {parts}")  # Debugging output
+
+        if len(parts) != 4:  # Expect four parts
             print(f"false: file name {filename} incorrect format")
             return None, None, None
-        
-        # Extract bean_type and process_type
-        bean_type = parts[1]
-        process_type = parts[2]
         
         # Extract roasting_batch_id (combine YYMMDD and tttt)
         date_and_id = parts[0]  # YY-MM-DD-tttt
         date, batch_id = ''.join(date_and_id.split('-')[:3]), date_and_id.split('-')[3]
         roasting_batch_id = date + batch_id
+        
+        # Extract bean_type and process_type from the second and third parts
+        bean_type = parts[2]
+        process_type = parts[3]
         
         return bean_type, process_type, roasting_batch_id
     except Exception as e:
