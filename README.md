@@ -28,6 +28,17 @@ This repository contains Python code and resources for managing and analyzing co
 - **import_sql_3.py**: Imports the table data into personal SQL database.
 - **delete_temporary_files_4.py**: Deletes temporary files after processing is complete.
 
+# Testing
+
+### How to Run Test
+1. Run the testing application: `python tests/testing_new_data.py`
+
+### Test Script Overview
+- **test_main.py**: Validates the correctness of data extraction and transformation logic., and verifies that data is successfully imported into the MySQL database.
+
+# Analysis
+# Project Outcome
+
 - ## 📌 Security Disclaimer
 The sensitive information (e.g., usernames and passwords) in this project is for demonstration purposes only. It is included to showcase how the project functions. 
 
@@ -44,13 +55,3 @@ import os
 DB_PASSWORD = os.getenv("DB_PASSWORD")
 
 
-# Testing
-
-### How to Run Test
-1. Run the testing application: `python tests/testing_new_data.py`
-
-### Test Script Overview
-- **test_main.py**: Validates the correctness of data extraction and transformation logic., and verifies that data is successfully imported into the MySQL database.
-
-# Analysis
-# Project Outcome
