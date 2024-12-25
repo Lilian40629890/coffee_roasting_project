@@ -1,5 +1,5 @@
+import os  # 导入 os 模块
 import pandas as pd
-import os
 
 # Mocked MySQL connection configuration for testing
 db_config = {
@@ -10,7 +10,7 @@ db_config = {
 }
 
 # Path to the testing CSV file
-test_file_path = 'test/sample_data/24-03-11_2144.laflore.washed.csv'
+test_file_path = 'test/sample_data/for new data/24-03-11_2144.laflore.washed.csv'
 
 # Simulate database connection
 def mock_connect_to_mysql():
@@ -60,8 +60,34 @@ def extract_info_from_filename(filename):
 # Mock upload function
 def mock_upload_to_mysql(df, bean_type, process_type, roasting_batch_id, connection):
     print("Mock: Uploading data to MySQL (simulation)")
-    print(f"Bean Type: {bean_type}, Process Type: {process_type}, , roasting_batch_id: {roasting_batch_id}")
+    print(f"Bean Type: {bean_type}, Process Type: {process_type}, Roasting Batch ID: {roasting_batch_id}")
     print(df.head())  # Print a preview of the data for verification
+
+# Main test execution function
+def test_process_file():
+    # Mock database connection
+    connection = mock_connect_to_mysql()
+    if not connection:
+        return
+    
+    # Process the test file
+    print(f"Processing test file: {test_file_path}")
+    bean_type, process_type, roasting_batch_id = extract_info_from_filename(test_file_path)  # 修正：增加 roasting_batch_id
+    if not bean_type or not process_type or not roasting_batch_id:
+        return  # Skip if extraction fails
+    
+    # Read and process the CSV
+    df = process_csv(test_file_path)
+    if df is not None:
+        # Mock upload data to database
+        mock_upload_to_mysql(df, bean_type, process_type, roasting_batch_id, connection)
+    else:
+        print("false: Data processing failed")
+
+# Execute test script
+if __name__ == "__main__":
+    test_process_file()
+
 
 # Main test execution function
 def test_process_file():
