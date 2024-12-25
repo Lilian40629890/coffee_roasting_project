@@ -33,8 +33,12 @@ This repository contains Python code and resources for managing and analyzing co
 ### How to Run Test
 1. Run the testing application: `python tests/testing_new_data.py`
 
+### GitHub Actions Workflow
+To automate and validate the test process, I have configured a GitHub Actions workflow using the .github/workflows/python-app_new_data_management.yml file.
+
 ### Test Script Overview
 - **test_main.py**: Validates the correctness of data extraction and transformation logic., and verifies that data is successfully imported into the MySQL database.
+- **python-app_new_data_management.yml**: Automates the testing process by setting up the Python environment, installing dependencies, and running tests on every push or pull request. It ensures that the testing_new_data.py script functions correctly and verifies the integration with MySQL by running tests as part of the CI pipeline.
 
 # Analysis
 # Project Outcome
