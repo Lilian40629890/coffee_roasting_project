@@ -10,7 +10,7 @@ db_config = {
 }
 
 # Path to the testing CSV file
-test_file_path = 'test/sample_data/for new data/24-03-11_2144.laflore.washed.csv'
+test_file_path = 'test/sample_data/24-03-11_2144.laflore.washed.csv'
 
 # Simulate database connection
 def mock_connect_to_mysql():
