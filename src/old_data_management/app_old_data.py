@@ -3,21 +3,24 @@ import subprocess
 import paramiko
 
 # Configuration for NAS connection
-NAS_HOST = "192.168.1.100"  # NAS 的 IP 位址
-NAS_USERNAME = "admin"      # 登入用戶名
-NAS_PASSWORD = "password"   # 登入密碼
-NAS_FOLDER = "/Public/Coffee/Artisan/"  # NAS 上的目標資料夾
-LOCAL_LOG_FOLDER = "/Users/lilianlee/coffee_database"  # Download the file to a local folder
+# The following username and password are for demonstration purposes only.
+# In real applications, it's recommended to use environment variables or other secure methods to store sensitive information.
+NAS_HOST = "192.168.1.100"  # IP address of the NAS
+NAS_USERNAME = "admin"      # Login username (example)
+NAS_PASSWORD = "password"   # Login password (example)
+NAS_FOLDER = "/Public/Coffee/Artisan/"  # Target folder on the NAS (example)
+LOCAL_LOG_FOLDER = "/Users/lilianlee/coffee_database"  # Download the file to a local folder (example)
 
 #data folder
 DATA_FOLDER = './data/'
 
 # MySQL database configuration
+# This is a sample configuration for testing purposes. For real projects, use a secure method, such as environment variables, to access sensitive information.
 DB_CONFIG = {
-    'host': 'localhost',
-    'user': 'root',
-    'password': 'password',
-    'database': 'coffee'
+    'host': 'localhost',        # MySQL host (example)
+    'user': 'root',             # MySQL username (example)
+    'password': 'password',     # MySQL password (example)
+    'database': 'coffee'        # MySQL database name (example)
 }
 
 # Step 1: Connect to NAS and fetch log files
