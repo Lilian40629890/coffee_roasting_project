@@ -16,11 +16,12 @@ except FileNotFoundError:
 df = df.fillna(0)  # Replace NaN values ​​with 0
 
 # Establish MySQL connection
+# This is a sample configuration for testing purposes. For real projects, use a secure method, such as environment variables, to access sensitive information.
 connection = pymysql.connect(
-    host="localhost",
-    user="root",
-    password="password",
-    database="coffee",
+    host="localhost",     # MySQL host (example)
+    user="root",          # MySQL username (example)
+    password="password",  # MySQL password (example)
+    database="coffee",    # MySQL database name
 )
 
 cursor = connection.cursor()
