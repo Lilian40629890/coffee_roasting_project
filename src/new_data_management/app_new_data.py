@@ -5,10 +5,10 @@ from mysql.connector import Error
 
 # MySQL connection configuration
 db_config = {
-    'host': 'localhost',    
-    'user': 'root',         
-    'password': 'password', 
-    'database': 'coffee'    
+    'host': 'localhost',        # MySQL host (example)
+    'user': 'root',             # MySQL username (example)
+    'password': 'password',     # MySQL password (example)
+    'database': 'coffee'        # MySQL database name
 }
 
 # Target folder path
