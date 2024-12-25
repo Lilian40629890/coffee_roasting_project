@@ -1,2 +1,4 @@
 # Ignore .env files containing sensitive data
 .env
+
+# example.env is only for demonstration purpose. 
