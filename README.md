@@ -17,7 +17,7 @@ This repository contains Python code and resources for managing and analyzing co
 3. Run the main application to organize new data: `src/new_data_management/app_new_data_management.py`
 
 ### New Data Management Scripts Overview
-- **app_new_data.py**: Processes CSV files containing coffee roasting data by extracting timestamp, temp1, and temp2 columns dynamically. Parses bean_type and process_type from file names (e.g., YY-MM-DD-tttt_beantype_processtype.alog) and integrates the information before uploading it to a MySQL database, ensuring compatibility with existing database schema.
+- **app_new_data_management.py**: Processes CSV files containing coffee roasting data by extracting timestamp, temp1, and temp2 columns dynamically. Parses bean_type and process_type from file names (e.g., YY-MM-DD-tttt_beantype_processtype.alog) and integrates the information before uploading it to a MySQL database, ensuring compatibility with existing database schema.
 
 ### Old Data Management Scripts Overview
 - **linebreak_logdata_1.py**: Breaks the log data into lines for easier processing.
@@ -28,7 +28,7 @@ This repository contains Python code and resources for managing and analyzing co
 - **import_sql_3.py**: Imports the table data into personal SQL database.
 - **delete_temporary_files_4.py**: Deletes temporary files after processing is complete.
 
-# Testing
+# Test
 
 ### How to Run Test
 1. Run the testing application: `python tests/testing_new_data.py`
