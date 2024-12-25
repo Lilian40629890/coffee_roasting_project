@@ -39,7 +39,7 @@ def extract_info_from_filename(filename):
         # Assume filename format: YY-MM-DD_tttt_beantype_processtype.csv
         base_name = os.path.splitext(os.path.basename(filename))[0]  # Remove file extension
         parts = base_name.split('_')
-        if len(parts) != 3:
+        if len(parts) != 4:
             print(f"false: file name {filename} incorrect format")
             return None, None, None
         
