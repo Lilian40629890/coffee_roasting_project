@@ -35,6 +35,12 @@ lists_to_find = ["'timex'", "'temp1'", "'temp2'"]  # Multiple list names to find
 found_lists = find_multiple_lists_in_log(log_file, lists_to_find)
 if found_lists:
     print("Find the following list:")
+
+    # Get the directory of the current script, namely test/old_data
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+
+    # Define the output directory as test/old_data/temporary_files
+    output_dir = os.path.join(script_dir, "temporary_files")
     
     # Set the directory where files are stored
     output_dir = "/test/old_data/temporary_files"
