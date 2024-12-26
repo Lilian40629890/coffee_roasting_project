@@ -63,6 +63,8 @@ def read_timex_file(file_path):
             for line in content:
                 stripped_line = line.strip()
                 if stripped_line:  # Ignore empty lines
+                    # Remove commas and try converting to float
+                    stripped_line = stripped_line.replace(',', '')
                     try:
                         values.append(float(stripped_line))  # Convert to float
                     except ValueError:
@@ -73,7 +75,6 @@ def read_timex_file(file_path):
     except Exception as e:
         print(f"Error reading {file_path}: {e}")
         return []
-
 
 
 # Convert the numeric value to a timestamp that conforms to the SQL TIMESTAMP format
