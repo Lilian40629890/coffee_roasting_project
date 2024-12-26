@@ -123,8 +123,4 @@ if __name__ == "__main__":
     output_file = os.path.join("test", "old_data", "temporary_files", "timestamp.txt")  # Output file name
     
     # Process the file
-    process_file(input_filename, timex_
-
-    
-    # Process the file
     process_file(input_filename, timex_file, output_file)
