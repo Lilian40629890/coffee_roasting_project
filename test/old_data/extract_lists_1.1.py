@@ -62,6 +62,7 @@ if found_lists:
         file_name = os.path.join(output_dir, f"{cleaned_name}.txt")  # Use cleaned name as file name
         with open(file_name, "w") as file:
             for entry in entries:
+                file.write(entry + "\n")
         print(f"Data saved to file: {file_name}")
 else:
     print("No matching listings found.")
