@@ -35,26 +35,28 @@ lists_to_find = ["'timex'", "'temp1'", "'temp2'"]  # Multiple list names to find
 found_lists = find_multiple_lists_in_log(log_file, lists_to_find)
 if found_lists:
     print("Find the following list:")
-    
-    # Set the directory where files are stored
-    output_dir = "/Users/lilianlee/coffee_database"
-    os.makedirs(output_dir, exist_ok=True)  #Create the folder if it does not exist
-    
+
+    # Set the directory where files are stored, relative to the script's directory
+    script_dir = os.path.dirname(os.path.abspath(__file__))  # Get the current script directory
+    output_dir = os.path.join(script_dir, "temporary_files")  # Define the output directory
+    os.makedirs(output_dir, exist_ok=True)  # Create the folder if it does not exist
+
     for list_name, entries in found_lists.items():
         print(f"\n{list_name}:")
         for entry in entries:
             print(entry)
 
+        # Clean the list name to remove single quotes
         cleaned_name = list_name.strip("'")  
-        file_name = os.path.join(output_dir, f"{cleaned_name}.txt")  
-        
-        # Set the output file path
-        file_name = os.path.join(output_dir, f"{list_name}.txt")  # Use list name as file name
+
+        # Set the output file path using cleaned_name
+        file_name = os.path.join(output_dir, f"{cleaned_name}.txt")  # Use cleaned name as file name
         with open(file_name, "w") as file:
             for entry in entries:
                 file.write(entry + "\n")
-        print(f"Data saved to file：{file_name}")
+        print(f"Data saved to file: {file_name}")
 else:
-    print("No matching listings found。")
+    print("No matching listings found.")
+
 
 
