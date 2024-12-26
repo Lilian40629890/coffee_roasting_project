@@ -33,4 +33,4 @@ with open(output_file, "r", encoding="utf-8") as temp_file:
 
 # Print a portion of the output content to check the result
 print("\n--- Output File Content Preview ---")
-print(output_content[:500])  # Print the first 500 characters as a preview
+print(output_content[:5000])  # Print the first 500 characters as a preview
