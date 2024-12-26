@@ -42,7 +42,7 @@ jobs:
 
     - name: Run Python script with the file name parameter
       run: |
-        python test/old_data/timestamps_1.3.py test/old_data/sample_data/23-06-25_2130月見野櫻花.alog
+        python test/old_data/test_old_data_management.py test/old_data/sample_data/23-06-25_2130月見野櫻花.alog
 
 
     - name: Run Python script and print output
