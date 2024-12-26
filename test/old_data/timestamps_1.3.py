@@ -117,8 +117,14 @@ if __name__ == "__main__":
         sys.exit(1)
     
     input_filename = sys.argv[1]  # Get the file name passed by the command line
-    timex_file = "test/old_data/temporary_files/timex.txt"  # Input file name
-    output_file = "test/old_data/temporary_files/timestamp.txt"  # Output file name
+    
+    # Use os.path.join to ensure correct relative paths
+    timex_file = os.path.join("test", "old_data", "temporary_files", "timex.txt")  # Input file name
+    output_file = os.path.join("test", "old_data", "temporary_files", "timestamp.txt")  # Output file name
+    
+    # Process the file
+    process_file(input_filename, timex_
+
     
     # Process the file
     process_file(input_filename, timex_file, output_file)
