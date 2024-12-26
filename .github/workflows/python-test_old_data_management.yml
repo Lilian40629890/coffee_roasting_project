@@ -44,19 +44,19 @@ jobs:
       run: |
         python test/old_data/test_old_data_management.py test/old_data/sample_data/23-06-25_2130月見野櫻花.alog
 
-    - name: Run Python script with the file name parameter
+    - name: Run Python script with the file name parameter 1
       run: |
         python test/old_data/linebreak_logdata_1.py test/old_data/sample_data/23-06-25_2130月見野櫻花.alog
 
-    - name: Run Python script with the file name parameter
+    - name: Run Python script with the file name parameter 1.1
       run: |
         python test/old_data/extract_lists_1.1.py test/old_data/sample_data/23-06-25_2130月見野櫻花.alog
 
-    - name: Run Python script with the file name parameter
+    - name: Run Python script with the file name parameter 1.2
       run: |
         python test/old_data/file_modification_1.2.py test/old_data/sample_data/23-06-25_2130月見野櫻花.alog
 
-    - name: Run Python script with the file name parameter
+    - name: Run Python script with the file name parameter 1.3
       run: |
         python test/old_data/timestamps_1.3.py test/old_data/sample_data/23-06-25_2130月見野櫻花.alog
 
