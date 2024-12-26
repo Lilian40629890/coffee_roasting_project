@@ -61,21 +61,22 @@ def read_timex_file(file_path):
             content = file.readlines()  # Read all lines
             values = []
             for line in content:
-                stripped_line = line.strip()
+                stripped_line = line.strip()  # Remove whitespace characters at the beginning and end of the line
                 if stripped_line:  # Ignore empty lines
-                    # Split the line by space, clean up each value, and try converting it to float
-                    for value in stripped_line.split():
-                        cleaned_value = value.strip(",")  # Remove commas and any extra spaces
+                    # Use commas to separate numbers and remove whitespace around each number
+                    for value in stripped_line.split(","):
+                        cleaned_value = value.strip()  # Remove spaces
                         try:
-                            values.append(float(cleaned_value))  # Convert to float
+                            values.append(float(cleaned_value))  # Convert to float and add to list
                         except ValueError:
-                            print(f"Invalid value in {file_path}: {cleaned_value}")  # Log invalid values
+                            print(f"Invalid value in {file_path}: {cleaned_value}")  # if not a valid number
         if not values:
             raise ValueError(f"No valid numeric values found in {file_path}.")
         return values
     except Exception as e:
         print(f"Error reading {file_path}: {e}")
         return []
+
 
 
 # Convert the numeric value to a timestamp that conforms to the SQL TIMESTAMP format
@@ -125,11 +126,6 @@ def process_file(filename, timex_file, output_file):
         sys.exit(1)
 
 if __name__ == "__main__":
-    # Get file name from command line arguments
-    if len(sys.argv) < 2:
-        print("Please provide the file name as a command line parameter")
-        sys.exit(1)
-    
     input_filename = sys.argv[1]  # Get the file name passed by the command line
     
     # Use os.path.join to ensure correct relative paths
