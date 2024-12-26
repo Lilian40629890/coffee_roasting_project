@@ -1,0 +1,41 @@
+name: Python Test for Old Data Management
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Prepare mock environment
+      run: |
+        mkdir -p mock_nas
+        mkdir -p mock_local_logs
+        echo "Sample log content for testing old data" > mock_nas/sample_old_data.log
+        
+    - name: Check code structure
+      run: |
+        echo "Listing all files and folders recursively:"
+        ls -R
+        echo "Displaying content of test/test_old_data_management.py:"
+        cat test/test_old_data_management.py
+        
+    - name: Run test script for old data management
+      run: python test/old_data/test_old_data_management.py
