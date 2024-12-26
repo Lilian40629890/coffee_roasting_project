@@ -126,7 +126,7 @@ def process_file(filename, timex_file, output_file):
         sys.exit(1)
 
 if __name__ == "__main__":
-    input_filename = sys.argv[1]  # Get the file name passed by the command line
+    input_filename = "test/old_data/sample_data/23-06-25_2130月見野櫻花.alog"
     
     # Use os.path.join to ensure correct relative paths
     timex_file = os.path.join("test", "old_data", "temporary_files", "timex.txt")  # Input file name
