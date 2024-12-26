@@ -3,6 +3,14 @@ import re
 from datetime import datetime, timedelta
 import sys
 
+import re
+filename = "23-06-25_2130月見野櫻花.alog"
+match = re.match(r"(\d{2})-(\d{2})-(\d{2})_(\d{4})", filename)
+if match:
+    print("Match found:", match.groups())
+else:
+    print("No match found")
+
 # Parse the time in the file name
 def parse_time_from_filename(filename):
     try:
