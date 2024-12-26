@@ -37,7 +37,7 @@ if found_lists:
     print("Find the following list:")
     
     # Set the directory where files are stored
-    output_dir = "/Users/lilianlee/coffee_database"
+    output_dir = "/test/old_data/temporary_files"
     os.makedirs(output_dir, exist_ok=True)  #Create the folder if it does not exist
     
     for list_name, entries in found_lists.items():
