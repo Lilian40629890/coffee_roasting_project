@@ -1,7 +1,7 @@
 name: Python Test for Old Data Management 
 
 on:
-  push:
+  push: 
     branches:
       - main
   pull_request:
