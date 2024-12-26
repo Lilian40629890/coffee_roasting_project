@@ -43,7 +43,7 @@ fourth_list.extend([""] * (max_length - len(fourth_list)))
 table_data = list(zip(fourth_list, first_list, second_list, third_list))
 
 # 提取 timestamp.txt 中的前十六個字
-with open("/test/old_data/temporary_files/timestamp.txt", "r") as file:
+with open("/home/runner/work/coffee_roasting_project/coffee_roasting_project/test/old_data/temporary_files/timestamp.txt", "r") as file:
     first_sixteen_chars = file.read(16)  # 只讀取前 16 個字
 
 # 將格式 "2023-06-25 21:30" 轉換為 "2306252130"
@@ -70,7 +70,7 @@ for i in range(len(table_data)):
     table_data[i] = table_data[i] + (bean_type, process_type, roasting_batch_id)
 
 # Define output file name
-output_file = "/test/old_data/temporary_files/output.csv" 
+output_file = "/home/runner/work/coffee_roasting_project/coffee_roasting_project/test/old_data/temporary_files/output.csv" 
 
 # Write table to CSV
 with open(output_file, mode="w", newline="", encoding="utf-8") as file:
