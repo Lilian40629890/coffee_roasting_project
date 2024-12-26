@@ -36,8 +36,8 @@ jobs:
     - name: Check code structure
       run: |
         ls -R
-        cat test/test_main.py
+        cat test/new_data/test_new_data_management.py
         
     - name: Run tests
       run: |
-        python test/test_main.py
+        python test/new_data/test_new_data_management.py
