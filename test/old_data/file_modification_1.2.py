@@ -1,7 +1,7 @@
 import os
 
 # Ensure the working directory is correct
-output_dir = "test/old_data/temporary_files"  # Same directory as in extract_lists_1.1.py
+output_dir = "/home/runner/work/coffee_roasting_project/coffee_roasting_project/test/old_data/temporary_files"  # Same directory as in extract_lists_1.1.py
 
 # Update the modify_file function to include the full path
 def modify_file(file_name):
