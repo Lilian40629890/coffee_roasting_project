@@ -1,0 +1,1 @@
+# this file is created for storing temporary files during data maanagment process
