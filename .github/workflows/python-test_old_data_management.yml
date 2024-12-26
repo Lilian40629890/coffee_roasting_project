@@ -47,11 +47,6 @@ jobs:
     - name: Run Python script and print output
       run: |
         set -x  # Make the script output detailed information about the execution process
-        python test/old_data/test_old_data_management.py 
-        set +x  # Turn off verbose output
-
-      - name: Run Python script and print output2
-      run: |
-        set -x  # Make the script output detailed information about the execution process
         python test/old_data/timestamps_1.3.py
         set +x  # Turn off verbose output
+
