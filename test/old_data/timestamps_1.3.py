@@ -66,11 +66,14 @@ def read_timex_file(file_path):
                     try:
                         values.append(float(stripped_line))  # Convert to float
                     except ValueError:
-                        print(f"Invalid value in {file_path}: {stripped_line}")  # Debug invalid values
+                        print(f"Invalid value in {file_path}: {stripped_line}")  # Log invalid values
+        if not values:
+            raise ValueError(f"No valid numeric values found in {file_path}.")
         return values
     except Exception as e:
         print(f"Error reading {file_path}: {e}")
         return []
+
 
 
 # Convert the numeric value to a timestamp that conforms to the SQL TIMESTAMP format
