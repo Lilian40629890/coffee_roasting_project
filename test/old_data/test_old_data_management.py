@@ -70,6 +70,11 @@ if __name__ == "__main__":
         # Step 3: Simulated database upload
         mock_upload_to_mysql("Simulated processed data")
 
+        file_path = "/home/runner/work/coffee_roasting_project/coffee_roasting_project/test/old_data/temporary_files/output.csv"
+        with open(file_path, 'r') as file:
+            file_content = file.read()
+        print(file_content)
+
         # All done
         print("Mock test script completed successfully.")
     except Exception as e:
