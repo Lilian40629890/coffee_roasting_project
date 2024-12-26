@@ -27,5 +27,7 @@ with open(output_file, "w", encoding="utf-8") as temp_file:
 
 print(f"File processing completed and saved to {output_file}")
 
-
+# Print a portion of the output content to check the result
+print("\n--- Output File Content Preview ---")
+print(output_content[:500])  # Print the first 500 characters as a preview
 
