@@ -55,6 +55,12 @@ if found_lists:
             for entry in entries:
                 file.write(entry + "\n")
         print(f"Data saved to file: {file_name}")
+        
+        # Confirm the content of the file by reading it back
+        print(f"\nConfirming contents of {file_name}:")
+        with open(file_name, "r") as file:
+            file_contents = file.read()
+            print(file_contents)  # Print the file content
 else:
     print("No matching listings found.")
 
