@@ -43,7 +43,7 @@ def mock_upload_to_mysql(data):
 def process_logs_with_scripts(log_files):
     try:
         script_paths = ["test/old_data/linebreak_logdata_1.py", "test/old_data/extract_lists_1.1.py", "test/old_data/file_modification_1.2.py", 
-                        "test/old_data/timestamps_1.3.py", "test/old_data/integrate_lists_2.py", "test/old_data/import_sql_3.py", "test/old_data/delete_temporary_files_4.py"]
+                        "test/old_data/timestamps_1.3.py", "test/old_data/integrate_lists_2.py", "test/old_data/delete_temporary_files_4.py"]
         
         for log_file in log_files:
             print(f"Processing {log_file}")
