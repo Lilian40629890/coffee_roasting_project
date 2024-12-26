@@ -7,7 +7,10 @@ import sys
 def parse_time_from_filename(filename):
     try:
         # Use regular expressions to match date and time formats
+        print(f"Attempting to parse filename: {filename}")  # Debugging output
         match = re.match(r"(\d{2})-(\d{2})-(\d{2})_(\d{4})", filename)
+        
+        # Print if match is found
         if match:
             year = "20" + match.group(1)  # data collect started at 20XX
             month = match.group(2)
@@ -15,16 +18,17 @@ def parse_time_from_filename(filename):
             hour = match.group(4)[:2]
             minute = match.group(4)[2:]
             time_str = f"{year}-{month}-{day} {hour}:{minute}"
+            print(f"Extracted time string: {time_str}")  # Debugging output
             return datetime.strptime(time_str, "%Y-%m-%d %H:%M")
         else:
-            print(f"Filename does not match expected pattern: {filename}")
+            print(f"Filename does not match expected pattern: {filename}")  # Debugging output
         return None
     except Exception as e:
         print(f"Error parsing time from filename {filename}: {e}")
         return None
 
 # Set the folder path where the file is located
-folder_path = "test/old_data/sample_data"  # Update folder path as per your directory structure
+folder_path = "test/old_data/sample_data"  # Ensure this folder path is correct
 
 # Assuming there is only one file in the folder, get the name of the file
 files = os.listdir(folder_path)
@@ -117,4 +121,3 @@ if __name__ == "__main__":
     
     # Process the file
     process_file(input_filename, timex_file, output_file)
-
