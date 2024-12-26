@@ -5,17 +5,19 @@ import sys
 
 # Parse the time in the file name
 def parse_time_from_filename(filename):
-    # Use regular expressions to match date and time formats
+    # Adjust regular expression to match the new file name format
     match = re.match(r"(\d{2})-(\d{2})-(\d{2})_(\d{4})", filename)
     if match:
-        year = "20" + match.group(1)  # data collect started at 2020
+        year = "20" + match.group(1)  # data collect started at 20XX
         month = match.group(2)
         day = match.group(3)
         hour = match.group(4)[:2]
         minute = match.group(4)[2:]
         time_str = f"{year}-{month}-{day} {hour}:{minute}"
         return datetime.strptime(time_str, "%Y-%m-%d %H:%M")
-    return None
+    else:
+        raise ValueError(f"Filename does not match expected pattern: {filename}")
+
 
 # Set the folder path where the file is located
 folder_path = "/Users/lilianlee/coffee_database/timex.txt"
