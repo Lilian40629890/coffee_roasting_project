@@ -4,23 +4,23 @@ import os
 
 def find_multiple_lists_in_log(file_path, list_names):
     """
-    Find multiple list names and their values ​​specified in the log file
+    Find multiple list names and their values specified in the log file
     :param file_path: 
     :param list_names: 
     :return: 
     """
-    results = {list_name: [] for list_name in list_names}  #Initialize the result dictionary
-    # Construct a regular expression to match any list name
+    results = {list_name: [] for list_name in list_names}  # Initialize the result dictionary
+    # Construct a regular expression to match any list name and its values
     pattern = rf"({'|'.join(map(re.escape, list_names))}):\s*\[([^\]]+)\]"
     try:
         with open(file_path, 'r') as file:
             for line in file:
                 matches = re.findall(pattern, line)  # Find all matching lists
                 for match in matches:
-                    # Extract list names and values ​​and store them in the result dictionary
-                    for list_name in list_names:
-                        if line.startswith(f"{list_name}:"):
-                            results[list_name].append(line.strip())
+                    # Extract list names and values and store them in the result dictionary
+                    list_name, list_values = match
+                    # Clean up the extracted list values and store them
+                    results[list_name].append(list_values.strip())
     except FileNotFoundError:
         print(f"File not found：{file_path}")
         return {}
@@ -63,6 +63,7 @@ if found_lists:
             print(file_contents)  # Print the file content
 else:
     print("No matching listings found.")
+
 
 
 
