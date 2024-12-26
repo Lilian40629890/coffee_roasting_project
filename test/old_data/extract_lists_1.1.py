@@ -47,7 +47,6 @@ if found_lists:
             print(entry)
 
         cleaned_name = list_name.strip("'")  
-        file_name = os.path.join(output_dir, f"{cleaned_name}.txt")  
         
         # Set the output file path
         file_name = os.path.join(output_dir, f"{list_name}.txt")  # Use list name as file name
