@@ -38,7 +38,7 @@ jobs:
         cat test/old_data/test_old_data_management.py
         
     - name: Run test script for old data management
-      run: python test/old_data/test_old_data_management.py
+      run: python test/old_data/test_old_data_management.py test/old_data/sample_data/23-06-25_2130月見野櫻花.alog
 
     - name: Run Python script and print output
       run: |
