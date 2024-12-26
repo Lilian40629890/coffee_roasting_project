@@ -107,6 +107,7 @@ def process_file(filename, timex_file, output_file):
         
         # 2. Read the value in timex.txt
         time_values = read_timex_file(timex_file)
+        print(f"Parsed time values: {time_values}")  # Debugging output
         if not time_values:
             raise ValueError(f"Failed to read or parse time values from {timex_file}")
         
