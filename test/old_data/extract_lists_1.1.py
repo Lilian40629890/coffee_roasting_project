@@ -36,16 +36,11 @@ found_lists = find_multiple_lists_in_log(log_file, lists_to_find)
 if found_lists:
     print("Find the following list:")
 
-    # Get the directory of the current script, namely test/old_data
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-
-    # Define the output directory as test/old_data/temporary_files
-    output_dir = os.path.join(script_dir, "temporary_files")
-    
-    # Set the directory where files are stored
-    output_dir = "/test/old_data/temporary_files"
-    os.makedirs(output_dir, exist_ok=True)  #Create the folder if it does not exist
-    
+    # Set the directory where files are stored, relative to the script's directory
+    script_dir = os.path.dirname(os.path.abspath(__file__))  # Get the current script directory
+    output_dir = os.path.join(script_dir, "temporary_files")  # Define the output directory
+    os.makedirs(output_dir, exist_ok=True)  # Create the folder if it does not exist
+      
     for list_name, entries in found_lists.items():
         print(f"\n{list_name}:")
         for entry in entries:
