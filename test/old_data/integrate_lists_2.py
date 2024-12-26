@@ -2,13 +2,13 @@ import csv
 import sys
 
 # Read the file and assign the contents to variables
-with open("/test/old_data/temporary_files/timex.txt", "r") as file:
+with open("/home/runner/work/coffee_roasting_project/coffee_roasting_project/test/old_data/temporary_files/timex.txt", "r") as file:
     first_data = [line.strip() for line in file.readlines()]
 
-with open("/test/old_data/temporary_files/temp1.txt", "r") as file:
+with open("/home/runner/work/coffee_roasting_project/coffee_roasting_project/test/old_data/temporary_files/temp1.txt", "r") as file:
     second_data = [line.strip() for line in file.readlines()]
 
-with open("/test/old_data/temporary_files/temp2.txt", "r") as file:
+with open("/home/runner/work/coffee_roasting_project/coffee_roasting_project/test/old_data/temporary_files/temp2.txt", "r") as file:
     third_data = [line.strip() for line in file.readlines()]
 
 with open("/test/old_data/temporary_files/timestamp.txt", "r") as file:
