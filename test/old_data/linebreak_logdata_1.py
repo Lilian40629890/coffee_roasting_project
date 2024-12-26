@@ -24,10 +24,13 @@ output_file = "linebreak.txt"
 
 with open(output_file, "w", encoding="utf-8") as temp_file:
     temp_file.write(content)
-
+    
 print(f"File processing completed and saved to {output_file}")
+
+# Read and print the content of the output file for verification
+with open(output_file, "r", encoding="utf-8") as temp_file:
+    output_content = temp_file.read()
 
 # Print a portion of the output content to check the result
 print("\n--- Output File Content Preview ---")
 print(output_content[:500])  # Print the first 500 characters as a preview
-
