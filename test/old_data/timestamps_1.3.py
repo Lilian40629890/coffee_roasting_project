@@ -29,7 +29,7 @@ def parse_time_from_filename(filename):
         return None
 
 # Set the folder path where the file is located
-folder_path = "test/old_data/sample_data"  # Ensure this folder path is correct
+folder_path = "/home/runner/work/coffee_roasting_project/coffee_roasting_project/test/old_data/temporary_files/timex.txt"  # Ensure this folder path is correct
 
 # Assuming there is only one file in the folder, get the name of the file
 files = os.listdir(folder_path)
