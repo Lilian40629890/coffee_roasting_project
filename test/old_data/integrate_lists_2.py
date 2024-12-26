@@ -59,8 +59,8 @@ print(f"Roasting Batch ID: {roasting_batch_id}")  # 印出確認
 
 # original code: bean_type = input("What is the bean type? ")
 # original code: process_type = input("What is the process type? ")
-bean_type = Sakura
-process_type = washed 
+bean_type = 'Sakura'
+process_type = 'washed' 
 
 # 確認用戶輸入的內容
 print(f"Bean Type: {bean_type}, Process Type: {process_type}")
