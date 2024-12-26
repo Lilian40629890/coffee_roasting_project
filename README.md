@@ -6,15 +6,44 @@ This repository contains Python code and resources for managing and analyzing co
 - Organizes historical data in a structured MySQL database.
 - Collects real-time roasting temperature data, and sythesize it to MySQL database. 
 - Provides analysis tools for visualizing temperature trends.
-- For more detailed architecture: `architecture_diagram/architecture_diagram.md`
 
+##  Architecture
+- For detailed architecture regarding this project: `architecture_diagram/architecture_diagram.md`
+
+# Data Overview
+This project processes two types of datasets, distinguished by their data format. The data format was updated this year, resulting in differences in the processing methods. Both sample data is provided for demonstration, please refer to: 'sample_data' 
+
+### Data Format
+1. New Data: 
+ - Key Characteristics:
+   - In csv format.
+   - Naming: Unified in file naming. 
+     YY-MM-DD_tttt_beantype_processtype.csv
+ - Processing Workflow:
+   - Please refer to 'src/new_data_management/app_new_data_management.py'
+2. Old Data: 
+ - Key Characteristics:
+   - In log format.
+   - Naming: Not unified in file naming. 
+     YY-MM-DD_tttt_descirption.csv
+ - Processing Workflow:
+   - Please refer to 'src/old_data_management/app_old_data_management.py'
+
+### Explanation of Key Differences
+- Format: New data are stored in csv format, where as old data are stored in log.
+- Naming: New data has unified naming rules, where as old data has different descriptions.
+
+### How Data is Handled
+- New Data: 
+- Old Data: 
 
 # Data Management
-
 ### How to Collect Data
 1. Clone this repository.
 2. Install dependencies: `pip install -r requirements.txt`
-3. Run the main application to organize new data: src/new_data_management/app_new_data_management.py`
+3. Run main application: 
+   - organize new data: 'src/new_data_management/app_new_data_management.py`
+   - organize old data: 'src/old_data_management/app_old_data_management.py'
 
 ### New Data Management Scripts Overview
 - **app_new_data_management.py**: Processes CSV files containing coffee roasting data by extracting timestamp, temp1, and temp2 columns dynamically. Parses bean_type and process_type from file names (e.g., YY-MM-DD-tttt_beantype_processtype.alog) and integrates the information before uploading it to a MySQL database, ensuring compatibility with existing database schema.
@@ -39,6 +68,15 @@ To automate and validate the test process, I have configured a GitHub Actions wo
 ### Test Script Overview
 - **test_main.py**: Validates the correctness of data extraction and transformation logic., and verifies that data is successfully imported into the MySQL database.
 - **python-app_new_data_management.yml**: Automates the testing process by setting up the Python environment, installing dependencies, and running tests on every push or pull request. It ensures that the testing_new_data.py script functions correctly and verifies the integration with MySQL by running tests as part of the CI pipeline.
+
+### Differences Between Test and Production Scripts
+To facilitate testing without requiring access to the actual NAS system or MySQL database, the test scripts include the following modifications:
+1. NAS System Simulation:
+- Instead of connecting to a real NAS, test scripts use mock functions to simulate data retrieval.
+- Mocked paths and sample data are used to represent files stored on the NAS.
+2. MySQL Database Simulation:
+- Test scripts do not connect to a real database but use simulated connections.
+- Data upload functions print outputs to verify the process instead of executing actual database queries.
 
 # Analysis
 # Project Outcome
