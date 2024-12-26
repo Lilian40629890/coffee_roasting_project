@@ -45,6 +45,9 @@ if found_lists:
         print(f"\n{list_name}:")
         for entry in entries:
             print(entry)
+
+        cleaned_name = list_name.strip("'")  # 移除单引号
+        file_name = os.path.join(output_dir, f"{cleaned_name}.txt")  # 改为无单引号命名
         
         # Set the output file path
         file_name = os.path.join(output_dir, f"{list_name}.txt")  # Use list name as file name
