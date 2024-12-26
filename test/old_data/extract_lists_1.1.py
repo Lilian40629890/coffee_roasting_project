@@ -11,7 +11,7 @@ def find_multiple_lists_in_log(file_path, list_names):
     """
     results = {list_name: [] for list_name in list_names}  #Initialize the result dictionary
     # Construct a regular expression to match any list name
-    pattern = rf"({'|'.join(map(re.escape, list_names))}):\s*\[.*?\]"
+    pattern = rf"({'|'.join(map(re.escape, list_names))}):\s*\[([^\]]+)\]"
     try:
         with open(file_path, 'r') as file:
             for line in file:
