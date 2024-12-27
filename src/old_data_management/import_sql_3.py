@@ -5,7 +5,7 @@ import pymysql
 from integrate_lists_2 import output_file
 
 # 使用 f-string 來插入變數
-file_path = f"/users/lilianlee/coffee_database/{output_file}"
+file_path = f"/users/lilianlee/temporary_files/{output_file}"
 # 確認檔案存在
 try:
     df = pd.read_csv(file_path)
