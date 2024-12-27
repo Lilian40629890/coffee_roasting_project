@@ -20,7 +20,7 @@ def parse_time_from_filename(filename):
 
 
 # Set the folder path where the file is located
-folder_path = "/Users/lilianlee/coffee_database/timex.txt"
+folder_path = "/Users/lilianlee/temporary_files/timex.txt"
 
 # Assuming there is only one file in the folder, get the name of the file
 filename = os.listdir(folder_path)[0]  # Get the first file name
@@ -76,8 +76,8 @@ if __name__ == "__main__":
         print("Please provide the file name as a command line parameter")
         sys.exit(1)
     input_filename = sys.argv[1]  # Get the file name passed by the command line
-    timex_file = "/Users/lilianlee/coffee_database/timex.txt"  # Input file name
-    output_file = "/Users/lilianlee/coffee_database/timestamp.txt"  # Output file name
+    timex_file = "/Users/lilianlee/temporary_files/timex.txt"  # Input file name
+    output_file = "/Users/lilianlee/temporary_files/timestamp.txt"  # Output file name
     process_file(input_filename, timex_file, output_file)
 
 
