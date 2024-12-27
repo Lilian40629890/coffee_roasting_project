@@ -2,16 +2,16 @@ import csv
 import sys
 
 # Read the file and assign the contents to variables
-with open("/Users/lilianlee/coffee_database/timex.txt", "r") as file:
+with open("/Users/lilianlee/temporary_files/timex.txt", "r") as file:
     first_data = [line.strip() for line in file.readlines()]
 
-with open("/Users/lilianlee/coffee_database/temp1.txt", "r") as file:
+with open("/Users/lilianlee/temporary_files/temp1.txt", "r") as file:
     second_data = [line.strip() for line in file.readlines()]
 
-with open("/Users/lilianlee/coffee_database/temp2.txt", "r") as file:
+with open("/Users/lilianlee/temporary_files/temp2.txt", "r") as file:
     third_data = [line.strip() for line in file.readlines()]
 
-with open("/Users/lilianlee/coffee_database/timestamp.txt", "r") as file:
+with open("/Users/lilianlee/temporary_files/timestamp.txt", "r") as file:
     fourth_data = [line.strip() for line in file.readlines()]   
 
 # Use the join() method to convert each item in the list into a string
@@ -43,7 +43,7 @@ fourth_list.extend([""] * (max_length - len(fourth_list)))
 table_data = list(zip(fourth_list, first_list, second_list, third_list))
 
 # 提取 timestamp.txt 中的前十六個字
-with open("/Users/lilianlee/coffee_database/timestamp.txt", "r") as file:
+with open("/Users/lilianlee/temporary_files/timestamp.txt", "r") as file:
     first_sixteen_chars = file.read(16)  # 只讀取前 16 個字
 
 # 將格式 "2023-06-25 21:30" 轉換為 "2306252130"
@@ -70,7 +70,7 @@ for i in range(len(table_data)):
     table_data[i] = table_data[i] + (bean_type, process_type, roasting_batch_id)
 
 # Define output file name
-output_file = "/Users/lilianlee/coffee_database/output.csv" 
+output_file = "/Users/lilianlee/temporary_files/output.csv" 
 
 # Write table to CSV
 with open(output_file, mode="w", newline="", encoding="utf-8") as file:
