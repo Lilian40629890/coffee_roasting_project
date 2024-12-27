@@ -11,21 +11,21 @@ This repository contains Python code and resources for managing and analyzing co
 - For detailed architecture regarding this project: `architecture_diagram/architecture_diagram.md`
 
 # Data Overview
-This project processes two types of datasets, distinguished by their data format. The data format was updated this year, resulting in differences in the processing methods. Both sample data is provided for demonstration, please refer to: 'sample_data' 
+This project processes two types of datasets, distinguished by their data format. The data format was updated this year, resulting in differences in the processing methods. Both sample data is provided for demonstration, please refer to: `sample_data` file.
 
 ### Data Format
 1. New Data: 
  - Key Characteristics:
    - In csv format.
    - Naming: Unified in file naming. 
-     YY-MM-DD_tttt_beantype_processtype.csv
+     YY-MM-DD_TTTT_beantype_processtype.csv
  - Processing Workflow:
-   - Please refer to 'src/new_data_management/app_new_data_management.py'
+   - Please refer to `src/new_data_management/app_new_data_management.py`
 2. Old Data: 
  - Key Characteristics:
    - In log format.
    - Naming: Not unified in file naming. 
-     YY-MM-DD_tttt_descirption.csv
+     YY-MM-DD_TTTT_descirption.csv
  - Processing Workflow:
    - Please refer to 'src/old_data_management/app_old_data_management.py'
 
@@ -42,11 +42,11 @@ This project processes two types of datasets, distinguished by their data format
 1. Clone this repository.
 2. Install dependencies: `pip install -r requirements.txt`
 3. Run main application: 
-   - organize new data: 'src/new_data_management/app_new_data_management.py`
-   - organize old data: 'src/old_data_management/app_old_data_management.py'
+   - organize new data: `src/new_data_management/app_new_data_management.py`
+   - organize old data: `src/old_data_management/app_old_data_management.py`
 
 ### New Data Management Scripts Overview
-- **app_new_data_management.py**: Processes CSV files containing coffee roasting data by extracting timestamp, temp1, and temp2 columns dynamically. Parses bean_type and process_type from file names (e.g., YY-MM-DD-tttt_beantype_processtype.alog) and integrates the information before uploading it to a MySQL database, ensuring compatibility with existing database schema.
+- **app_new_data_management.py**: Processes CSV files containing coffee roasting data by extracting timestamp, temp1, and temp2 columns dynamically. Parses bean_type and process_type from file names (e.g., YY-MM-DD-TTTT_beantype_processtype.alog) and integrates the information before uploading it to a MySQL database, ensuring compatibility with existing database schema.
 
 ### Old Data Management Scripts Overview
 - **linebreak_logdata_1.py**: Breaks the log data into lines for easier processing.
@@ -60,10 +60,15 @@ This project processes two types of datasets, distinguished by their data format
 # Test
 
 ### How to Run Test
-1. Run the testing application: `python tests/testing_new_data.py`
+1. Run the testing application:
+   - test new data: `test/new_data/test_new_data_management.py`
+   - test old data: `test/old_data/test_old_data_management.py`
+
 
 ### GitHub Actions Workflow
-To automate and validate the test process, I have configured a GitHub Actions workflow using the .github/workflows/python-app_new_data_management.yml file.
+To automate and validate the test process, I have configured GitHub Actions workflow. 
+   - for new data: `.github/workflows/python-test_new_data_management.yml`
+   - for old data: `.github/workflows/python-test_old_data_management.yml`
 
 ### Test Script Overview
 - **test_main.py**: Validates the correctness of data extraction and transformation logic., and verifies that data is successfully imported into the MySQL database.
