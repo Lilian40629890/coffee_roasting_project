@@ -38,11 +38,13 @@ For detailed methods and visualizations, see `Jupyter_Notebooks/README.md`.
 1. Clone this repository: `git clone <repository-url>`
 2. Install dependencies: `pip install -r requirements.txt`
 3. See `User Manual.md` for detailed setup and usage instructions.
+
 For detailed data management workflows, see `src/README.md`.
 
 # Test
 - Run tests for new data: `python test/new_data/test_new_data_management.py`
 - Run tests for old data: `python test/old_data/test_old_data_management.py`
+
 For detailed testing workflows, see `test/README.md`.
 
 ## Potential Directions
@@ -51,4 +53,6 @@ For detailed testing workflows, see `test/README.md`.
 - Exploring predictive models to optimize roasting processes.
 
 ## Security Disclaimer
-Sensitive information in this project (e.g., database credentials) is for demonstration only. For detailed information, see `Support.md`.
+Sensitive information in this project (e.g., database credentials) is for demonstration only. 
+
+For detailed information, see `Support.md`.
