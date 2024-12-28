@@ -27,5 +27,11 @@ with open(output_file, "w", encoding="latin-1") as temp_file:
 
 print(f"File processing completed and saved to {output_file}")
 
+# Read and print the content of the output file for verification
+with open(output_file, "r", encoding="latin-1") as temp_file:
+    output_content = temp_file.read()
 
+# Print a portion of the output content to check the result
+print("\n--- Output File Content Preview ---")
+print(output_content[:5000])  # Print the first 500 characters as a preview
 
