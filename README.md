@@ -84,7 +84,18 @@ To facilitate testing without requiring access to the actual NAS system or MySQL
 - Data upload functions print outputs to verify the process instead of executing actual database queries.
 
 # Analysis
-# Project Outcome
+In this analysis, I utilized data collected over the past three years to gain insights into bean and process type preferences. The data was processed and cleaned using Jupyter Notebook to ensure its accuracy and completeness. 
+Using visualization tools like **Matplotlib**, I was able to explore trends and patterns within the dataset. The following are two key visualizations that illustrate the preferences for different bean types and process types:
+
+### Bean Type Preference
+This chart represents the distribution of different bean types used in roasting. It provides insights into which bean varieties are most popular and allows for a better understanding of customer preferences.
+![Bean_type_preference_pie_chart](Jupyter_Notebooks/Images/Bean_type_preference_pie_chart.png)
+
+### Process Type Preference
+This chart displays the preference for different roasting processes. It helps to visualize which roasting methods are most frequently chosen, providing useful information for optimizing production strategies.
+![Process_type_preference_pie_chart](Jupyter_Notebooks/Images/Process_type_preference_pie_chart.png)
+
+These visualizations are the result of a preliminary analysis performed in Jupyter Notebook, and they serve as an initial exploration of the data. The goal was to identify patterns that could inform future decisions and guide more in-depth analyses.
 
 ## Security Disclaimer
 The sensitive information (e.g., usernames and passwords) in this project is for demonstration purposes only. It is included to showcase how the project functions. 
