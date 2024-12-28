@@ -41,7 +41,7 @@ For detailed methods and visualizations, see `Jupyter_Notebooks/README.md`.
 
 For detailed data management workflows, see `src/README.md`.
 
-# Test
+## Test
 - Run tests for new data: `python test/new_data/test_new_data_management.py`
 - Run tests for old data: `python test/old_data/test_old_data_management.py`
 
