@@ -60,7 +60,15 @@ def connect_and_fetch_logs():
 def process_logs_with_scripts():
     try:
         log_files = [f for f in os.listdir(LOCAL_LOG_FOLDER) if f.endswith('.log')]
-        script_paths = ["linebreak_logdata_1.py", "extract_lists_1.1.py", "file_modification_1.2.py", "timestamps_1.3.py", "integrate_lists_2.py","export_sql_3.py", "delete_temporary_files_4.py"]
+        script_paths = [
+            "linebreak_logdata_1.py", 
+            "extract_lists_1.1.py", 
+            "file_modification_1.2.py", 
+            "timestamps_1.3.py", 
+            "integrate_lists_2.py",
+            "export_sql_3.py", 
+            "delete_temporary_files_4.py"
+        ]
         
         for log_file in log_files:
             print(f"Processing {log_file}")
