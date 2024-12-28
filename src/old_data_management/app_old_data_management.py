@@ -12,7 +12,7 @@ NAS_FOLDER = "/Public/Coffee/Artisan/"  # Target folder on the NAS (example)
 LOCAL_LOG_FOLDER = "/Users/lilianlee/coffee_database"  # Download the file to a local folder (example)
 
 #data folder
-DATA_FOLDER = '/Users/lilianlee/coffee_database/temporary_files'
+DATA_FOLDER = '/Users/lilianlee/temporary_files'
 
 # MySQL database configuration
 # This is a sample configuration for testing purposes. For real projects, use a secure method, such as environment variables, to access sensitive information.
