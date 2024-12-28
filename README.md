@@ -18,9 +18,11 @@ For detailed explanation and comparison: `sample_data/README.md`
 
 ## Analysis
 Using data from the past three years, I performed a preliminary analysis to explore customer preferences. Key findings include:
-- **Bean Type Preference**: 
+- **Bean Type Preference**:
+
   ![Bean_type_preference_pie_chart](Jupyter_Notebooks/Images/Bean_type_preference_pie_chart.png)
-- **Process Type Preference**: 
+- **Process Type Preference**:
+
   ![Process_type_preference_pie_chart](Jupyter_Notebooks/Images/Process_type_preference_pie_chart.png)
 For detailed methods and visualizations, see `Jupyter_Notebooks/README.md`.
 
