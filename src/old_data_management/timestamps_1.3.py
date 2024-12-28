@@ -23,7 +23,18 @@ def parse_time_from_filename(filename):
 folder_path = "/Users/lilianlee/temporary_files/timex.txt"
 
 # Assuming there is only one file in the folder, get the name of the file
-filename = os.listdir(folder_path)[0]  # Get the first file name
+filename = os.listdir(folder_path)
+
+# Filter files that match the expected pattern
+valid_files = [f for f in files if parse_time_from_filename(f)]
+
+# If no valid files are found
+if not valid_files:
+    print("No files found with the expected pattern.")
+    sys.exit(1)
+
+# Get the first valid file
+filename = valid_files[0]
 
 # Parse the time in the file name
 if filename:
