@@ -10,7 +10,7 @@ This repository contains Python code and resources for managing and analyzing co
 ##  Project Architecture
 For detailed architecture regarding this project: `architecture_diagram/architecture_diagram.md`
 
-# Data Overview
+## Data Overview
 This project processes two types of datasets with distinct formats:
 1. **New Data**: CSV files with unified naming conventions, easily integrated into the database.
 2. **Old Data**: Log files with inconsistent formats, requiring customized processing.
