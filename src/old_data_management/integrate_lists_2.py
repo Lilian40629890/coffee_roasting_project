@@ -42,30 +42,30 @@ fourth_list.extend([""] * (max_length - len(fourth_list)))
 # Merge into table format
 table_data = list(zip(fourth_list, first_list, second_list, third_list))
 
-# 提取 timestamp.txt 中的前十六個字
+# Extract the first sixteen characters in timestamp.txt
 with open("/Users/lilianlee/temporary_files/timestamp.txt", "r") as file:
-    first_sixteen_chars = file.read(16)  # 只讀取前 16 個字
+    first_sixteen_chars = file.read(16)  # Read only the first 16 words
 
-# 將格式 "2023-06-25 21:30" 轉換為 "2306252130"
+# Example: Convert the format "2023-06-25 21:30" to "2306252130"
 roasting_batch_id = (
-    first_sixteen_chars[2:4] +  # 年的後兩位
-    first_sixteen_chars[5:7] +  # 月
-    first_sixteen_chars[8:10] +  # 日
-    first_sixteen_chars[11:13] +  # 小時
-    first_sixteen_chars[14:16]  # 分鐘
+    first_sixteen_chars[2:4] +  # The last two characters of year
+    first_sixteen_chars[5:7] +  # month
+    first_sixteen_chars[8:10] +  # day
+    first_sixteen_chars[11:13] +  # hour
+    first_sixteen_chars[14:16]  # minute
 )
 
-print(f"Roasting Batch ID: {roasting_batch_id}")  # 印出確認
+print(f"Roasting Batch ID: {roasting_batch_id}")  # Print for confirmation
 
-# 讓用戶輸入 bean_type 和 process_type
+# Let the user enter bean_type and process_type
 print("請輸入以下資料：")
 bean_type = input("What is the bean type? ")
 process_type = input("What is the process type? ")
 
-# 確認用戶輸入的內容
+# Confirm user input
 print(f"Bean Type: {bean_type}, Process Type: {process_type}")
 
-# 新增兩個直行並填入用戶輸入的 'bean_type' 和 'process_type'
+# Add two straight lines and fill in the 'bean_type' and 'process_type' entered by the user
 for i in range(len(table_data)):
     table_data[i] = table_data[i] + (bean_type, process_type, roasting_batch_id)
 
