@@ -97,6 +97,12 @@ This chart displays the preference for different roasting processes. It helps to
 
 These visualizations are the result of a preliminary analysis performed in Jupyter Notebook, and they serve as an initial exploration of the data. The goal was to identify patterns that could inform future decisions and guide more in-depth analyses.
 
+## Future Improvements
+
+To enhance the quality of future analyses, I recognize the importance of collecting more granular data, such as detailed drop times and incorporating sales metrics. By integrating these variables, I plan to conduct more comprehensive analyses, such as correlating roasting parameters with customer satisfaction and sales performance. 
+
+This project demonstrates my ability to work with real-world data, address limitations, and strategically plan for future improvements—a critical skillset for business analytics.
+
 ## Security Disclaimer
 The sensitive information (e.g., usernames and passwords) in this project is for demonstration purposes only. It is included to showcase how the project functions. 
 
