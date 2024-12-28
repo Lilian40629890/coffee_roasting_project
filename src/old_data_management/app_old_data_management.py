@@ -61,13 +61,13 @@ def process_logs_with_scripts():
     try:
         log_files = [f for f in os.listdir(LOCAL_LOG_FOLDER) if f.endswith('.log')]
         script_paths = [
-            "linebreak_logdata_1.py", 
-            "extract_lists_1.1.py", 
-            "file_modification_1.2.py", 
-            "timestamps_1.3.py", 
-            "integrate_lists_2.py",
-            "export_sql_3.py", 
-            "delete_temporary_files_4.py"
+            "src/old_data_management/linebreak_logdata_1.py", 
+            "src/old_data_management/extract_lists_1.1.py", 
+            "src/old_data_management/file_modification_1.2.py", 
+            "src/old_data_management/timestamps_1.3.py", 
+            "src/old_data_management/integrate_lists_2.py",
+            "src/old_data_management/export_sql_3.py", 
+            "src/old_data_management/delete_temporary_files_4.py"
         ]
         
         for log_file in log_files:
