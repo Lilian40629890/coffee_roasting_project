@@ -45,11 +45,10 @@ For detailed data management workflows, see `src/README.md`.
 - Run tests for old data: `python test/old_data/test_old_data_management.py`
 For detailed testing workflows, see `test/README.md`.
 
-## Future Improvements
-
-To enhance the quality of future analyses, I recognize the importance of collecting more granular data, such as detailed drop times and incorporating sales metrics. By integrating these variables, I plan to conduct more comprehensive analyses, such as correlating roasting parameters with customer satisfaction and sales performance. 
-
-This project demonstrates my ability to work with real-world data, address limitations, and strategically plan for future improvements—a critical skillset for business analytics.
+## Potential Directions
+- Adding detailed data on bean origin, roasting level, drop times, and crack times to enhance analysis.
+- Integrating sales data for a more comprehensive understanding of roasting impacts.
+- Exploring predictive models to optimize roasting processes.
 
 ## Security Disclaimer
 Sensitive information in this project (e.g., database credentials) is for demonstration only. For detailed information, see `Support.md`.

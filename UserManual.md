@@ -7,7 +7,6 @@ This document provides step-by-step instructions on how to use the [coffee_roast
 1. [Getting Started](#getting-started)
 2. [System Requirements](#system-requirements)
 3. [Installation Guide](#installation-guide)
-7. [Support](#support)
 
 ---
 
