@@ -1,7 +1,7 @@
 import os
 
 #Specify the file name to be deleted
-files_to_delete = ["linebreak.txt", "time.txt", "temp1.txt", "temp2.txt", "temp_output.txt", "timestamps.txt", "output.csv"]
+files_to_delete = ["linebreak.txt", "time.txt", "temp1.txt", "temp2.txt", "timestamps.txt", "output.csv"]
 
 # Delete files
 for file in files_to_delete:
