@@ -3,9 +3,8 @@
 ## How to Collect Data
 1. Clone this repository.
 2. Install dependencies: `pip install -r requirements.txt`
-3. Run main application: 
-   - organize new data: `src/new_data_management/app_new_data_management.py`
-   - organize old data: `src/old_data_management/app_old_data_management.py`
+- Run main application for new data: `src/new_data_management/app_new_data_management.py`
+- Run main application for old data: `src/old_data_management/app_old_data_management.py`
 
 ## New Data Management Scripts Overview
 - **app_new_data_management.py**: Processes CSV files containing coffee roasting data by extracting timestamp, temp1, and temp2 columns dynamically. Parses bean_type and process_type from file names (e.g., YY-MM-DD-TTTT_beantype_processtype.alog) and integrates the information before uploading it to a MySQL database, ensuring compatibility with existing database schema.

@@ -12,6 +12,6 @@ This chart displays the preference for different roasting processes. It helps to
 These visualizations are the result of a preliminary analysis performed in Jupyter Notebook, and they serve as an initial exploration of the data. The goal was to identify patterns that could inform future decisions and guide more in-depth analyses.
 
 
-# Potential Directions
-- Incorporating detailed drop time data and sales metrics into the analysis framework.
+## Potential Directions
+- Incorporating detailed bean drop time data and sales metrics into the analysis framework.
 - Investigating the feasibility of predictive models to enhance roasting optimization.
