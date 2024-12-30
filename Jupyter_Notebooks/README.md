@@ -12,6 +12,6 @@ This chart displays the preference for different roasting processes. It helps to
 These visualizations are the result of a preliminary analysis performed in Jupyter Notebook, and they serve as an initial exploration of the data. The goal was to identify patterns that could inform future decisions and guide more in-depth analyses.
 
 ## Potential Directions
-To improve the depth of future analyses, I recognize the importance of collecting more granular data, such as detailed information on the origin of the beans, roasting levels, bean drop times, and crack times. Additionally, incorporating sales data will provide a more comprehensive view. By integrating these factors, I plan to perform more in-depth analyses, such as correlating roasting parameters with customer satisfaction and sales performance.
+After analysing current datasets, I recognize the importance of collecting more granular data, such as detailed information on the origin of the beans, roasting levels, humidity, and key roasting milestones. Additionally, incorporating sales data will provide a more comprehensive view. By integrating these factors, I plan to perform more in-depth analyses, such as correlating roasting parameters with customer satisfaction and sales performance.
 
-This project showcases my ability to work with real-world data, address current limitations, and strategically plan for future improvements—a critical skillset for business analytics.
+This project showcases my ability to work with real-world data, address current limitations, and strategically plan for future improvements of critical skillset for business analytics.
