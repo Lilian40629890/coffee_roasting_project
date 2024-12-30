@@ -3,11 +3,12 @@
 This repository contains Python code and resources for managing and analyzing coffee roasting data.
 
 
-## Features
-- **Data Collection**: Real-time temperature data is captured and stored in a structured MySQL database.
-- **Data Management**: Processes historical and real-time data with separate workflows to ensure compatibility.
-- **Data Analysis**: Utilizes Jupyter Notebook for exploratory analysis and visualization.
+## Overview
+This project was designed to address real-world challenges in coffee roasting business by creating a data collection and analysis system. The goal was to collect roasting data, enabling analysis to improve operations and drive business decisions.
 
+This system features a MySQL database deployed on a cloud platform with remote access, enabling efficient data storage and retrieval. Python scripts handle data input, cleaning, and analysis, ensuring data accuracy and actionable insights. 
+
+This experience demonstrated the power of data-driven solutions to address real-world challenges.
 
 ##  Project Architecture
 For detailed architecture regarding this project: `architecture_diagram/architecture_diagram.md`
@@ -21,6 +22,9 @@ For detailed explanation and comparison: `sample_data/README.md`
 
 ## Analysis
 Using data from the past three years, I performed a preliminary analysis to explore customer preferences. Key findings include:
+- **Roasting Profile Curve**:
+
+  ![2021-01-16_Ethopia_Washed_Profile_Curve](Jupyter_Notebooks/Images/2021-01-16_Ethopia_Washed_Profile_Curve.png)
 - **Bean Type Preference**:
 
   ![Bean_type_preference_pie_chart](Jupyter_Notebooks/Images/Bean_type_preference_pie_chart.png)
